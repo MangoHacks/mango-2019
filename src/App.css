@@ -1,0 +1,32 @@
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+@keyframes blob-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.intro {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-size: 1.6em;
+  position: relative;
+  margin-top: -150px;
+}
+
+.about {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-size: 1.6em;
+}

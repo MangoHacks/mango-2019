@@ -402,7 +402,7 @@ const FaqContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: white;
+    background: transparent;
     width: 100%;
     text-align: left;
     margin-bottom: 12px;
@@ -582,6 +582,16 @@ function Faqs(props) {
 
   return (
     <div className="faqs">
+      <BlobWrap top={getTop(-1 / 12)} left={getLeft(-1 / 9)}>
+        <Blob width={400} height={500} particles={5} radius={30} radVar={18} />
+      </BlobWrap>
+      <BlobWrap
+        deg={Math.random() * 360}
+        top={getTop(1.9 / 5)}
+        left={getLeft(4 / 5)}
+      >
+        <Blob width={500} height={350} particles={4} radius={60} radVar={18} />
+      </BlobWrap>
       <div className="container">
         <h2>FAQs</h2>
 

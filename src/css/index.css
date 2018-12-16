@@ -46,6 +46,7 @@ h2 {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
 }
 
 .intro {
@@ -67,6 +68,7 @@ h2 {
   color: white;
   position: relative;
   margin-bottom: 60px;
+  z-index: 1;
 }
 
 .about-bg {
@@ -110,7 +112,9 @@ h2 {
   padding-top: 60px;
   padding-bottom: 60px;
   font-size: 1.4em;
+  position: relative;
 }
+
 
 .schedule {
   padding-top: 60px;
@@ -121,7 +125,8 @@ h2 {
   background-position: center center;
   color: white;
   position: relative;
-  background-image: linear-gradient(0deg, #ff5367 0%, #fa5e3e 100%);
+  /* background-image: linear-gradient(0deg, #ff5367 0%, #fa5e3e 100%); */
+  background-image: linear-gradient(0deg, #ff5367f7 0%, #fa5e3ea6 100%);
   margin-bottom: 60px;
 }
 

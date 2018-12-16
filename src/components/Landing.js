@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import Expand from "./Expand";
 
 import { visible } from "ansi-colors";
 
@@ -16,6 +17,10 @@ function shuffle(a) {
 
 function randFrom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function randBetween(to, from) {
+  return from + Math.floor(Math.random() * to);
 }
 
 function Blob(props) {
@@ -72,15 +77,17 @@ function Blob(props) {
               let style = {
                 transformOrigin: `${origin}px ${origin}px`,
                 animationName: "blob-spin",
-                animationIterationCount: "infinite",
                 animationDuration: `${animDuration + index * animDurVar}s`,
-                animationDelay: `${index * animDelayVar}s`,
+                animationDelay: `${index *
+                  randBetween(-20, -1) *
+                  animDelayVar}s`,
                 animationTimingFunction: "linear",
                 animationDirection: `${animDir}`
               };
 
               return (
                 <circle
+                  className="goo-particle"
                   key={index}
                   fill="url(#blobgrad)"
                   cx={`${ball.x}px`}
@@ -90,22 +97,24 @@ function Blob(props) {
                 />
               );
             })}
-            {mirrorVariance &&
+            {false &&
               balls.map((ball, index) => {
                 const origin = 5 * index + width / 2;
                 let animDir = randFrom(animationDirs);
                 let style = {
                   transformOrigin: `${origin}px ${origin}px`,
                   animationName: "blob-spin",
-                  animationIterationCount: "infinite",
                   animationDuration: `${animDuration + index * animDurVar}s`,
-                  animationDelay: `${index * animDelayVar}s`,
+                  animationDelay: `${index *
+                    randBetween(-20, -1) *
+                    animDelayVar}s`,
                   animationTimingFunction: "linear",
                   animationDirection: `${animDir}`
                 };
 
                 return (
                   <circle
+                    className="goo-particle"
                     key={index}
                     fill="url(#blobgrad)"
                     cx={`${ball.x}px`}
@@ -240,7 +249,7 @@ const HeroContent = styled.div`
   }
   .tagline {
     font-weight: 300;
-    font-size: 1.4em;
+    font-size: 1.3em;
     margin: 0px;
     margin-top: 28px;
     font-style: italic;
@@ -252,6 +261,8 @@ const HeroContent = styled.div`
     font-weight: 800;
   }
   .info {
+    padding: 0 20px;
+
     font-size: 1.4em;
     text-align: center;
     font-weight: 600;
@@ -262,6 +273,7 @@ const HeroContent = styled.div`
 
 const AppContainer = styled.div`
   position: relative;
+  overflow-x: hidden;
 `;
 
 const BlobWrap = styled.div`
@@ -336,20 +348,6 @@ function Hero() {
             particles={6}
           />
         </BlobWrap>
-        <BlobWrap
-          deg={Math.random() * 360}
-          top={getTop(3.1 / 5)}
-          left={getLeft(0.43 / 5)}
-        >
-          <Blob
-            width={500}
-            height={350}
-            particles={4}
-            radius={70}
-            radVar={18}
-            mirrorVariance={false}
-          />
-        </BlobWrap>
 
         <HeroContent>
           <div className="mangowrap">
@@ -366,12 +364,231 @@ function Hero() {
       </HeroContainer>
       <BlobWrap
         deg={Math.random() * 360}
+        top={getTop(3.1 / 5)}
+        left={getLeft(0.43 / 5)}
+      >
+        <Blob
+          width={500}
+          height={350}
+          particles={4}
+          radius={70}
+          radVar={18}
+          mirrorVariance={false}
+        />
+      </BlobWrap>
+      <BlobWrap
+        deg={Math.random() * 360}
         top={getTop(3.9 / 5)}
         left={getLeft(4 / 5)}
       >
         <Blob width={500} height={350} particles={4} radius={70} radVar={18} />
       </BlobWrap>
     </React.Fragment>
+  );
+}
+
+const FaqContainer = styled.div`
+  margin: 0 -16px;
+  .trigger {
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: inherit;
+    margin: 0;
+    padding: 8px 16px;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+  .trigger:hover {
+    box-shadow: 0px 1px 11px -2px rgba(0, 0, 0, 0.3);
+  }
+  .answer {
+    padding: 2px 16px 36px;
+  }
+  span {
+    display: inline-block;
+  }
+  .caret {
+    margin-left: 8px;
+  }
+`;
+
+function Caret(props) {
+  const { up = false } = props;
+  const deg = up ? 180 : 0;
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      style={{
+        transform: `rotate(${deg}deg)`
+      }}
+    >
+      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+      <path fill="none" d="M0 0h24v24H0V0z" />
+    </svg>
+  );
+}
+
+function Faq(props) {
+  const { question, answer } = props;
+  const [open, setOpen] = useState(false);
+
+  return (
+    <FaqContainer>
+      <button className="trigger" onClick={() => setOpen(!open)}>
+        <span className="header">{question}</span>
+        <span className="caret">
+          <Caret up={open} />
+        </span>
+      </button>
+      <Expand duration={300} open={open}>
+        <div className="answer">{answer}</div>
+      </Expand>
+    </FaqContainer>
+  );
+}
+
+function Faqs(props) {
+  const faqs = [
+    {
+      question: "When and where?",
+      answer: (
+        <React.Fragment>
+          <p>
+            MangoHacks ’18 will take place at Florida International University’s
+            PG6 Tech Station from February 1St to 3rd.
+          </p>
+          <a
+            target="_blank"
+            href="https://www.google.com/maps/place/Parking+Garage+6+-+Tech+Station/@25.7629694,-80.3757678,16z/data=!4m8!1m2!2m1!1sfiu+tech+station!3m4!1s0x88d9bf2fab7bbc9b:0x1da1c4a739e4a791!8m2!3d25.7600891!4d-80.3743608"
+          >
+            Get Directions
+          </a>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "How much does it cost?",
+      answer: (
+        <React.Fragment>
+          <p>
+            ZERO! FREE! Nada. Zip. $0. Everything we provide will be free, from
+            food, to swag, and snack. You only need to worry about what you’ll
+            achieve during the weekend.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "How long is it?",
+      answer: (
+        <React.Fragment>
+          <p>
+            People will arrive between 6pm and 8pm on Friday, February 1st.
+            Hacking will start at 10pm on Friday and go until 8am on Sunday.
+            Closing ceremony will end by 1pm on Sunday.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "How do I get there?",
+      answer: (
+        <React.Fragment>
+          <p>
+            We encourage car pooling and a good ol' road trip. However, keep an
+            eye out for info on buses coming to North Florida schools. Schools
+            with the most registrations are more likely to get a bus, so get
+            your friends to apply too.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "Who can come?",
+      answer: (
+        <React.Fragment>
+          <p>
+            Anyone who is currently a college student or who graduated in the
+            past year is welcome to participate. If it has been a while since
+            you were a student you can still participate as a mentor for the
+            attendees.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "What do I need to bring?",
+      answer: (
+        <React.Fragment>
+          <p>
+            You’ll need an ID and the stuff you’ll need throughout the weekend.
+            Laptop, chargers, phone, the basics. You’ll probably also want to
+            bring some basic hygiene products.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "How much experience do I need?",
+      answer: (
+        <React.Fragment>
+          <p>
+            Don’t be afraid if you don’t think you have enough experience, a
+            team or an idea. A hackathon is a great place for learning. We’ll
+            have great mentors and tools to help you with development.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "What’s the deal with teams?",
+      answer: (
+        <React.Fragment>
+          <p>
+            It’s no biggie. You can hack solo, but the more the merrier. You can
+            join a team of up to four people. You don’t need to have a team
+            ready before the event - there will be amazing people who you can
+            join at the event. If you have some friends in mind though, you’re
+            more than welcome to stay together.
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
+      question: "Wait! What about...?",
+      answer: (
+        <React.Fragment>
+          <p>
+            If you have any other questions, hit us up.{" "}
+            <a href="mailto:team@mangohacks.com">team@mangohacks.com</a>
+          </p>
+        </React.Fragment>
+      )
+    }
+  ];
+
+  return (
+    <div className="faqs">
+      <div className="container">
+        <h2>FAQs</h2>
+
+        {faqs.map((faq, index) => (
+          <Faq key={index} question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -391,31 +608,16 @@ class Landing extends Component {
           </p>
         </div>
         <div className="about">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1925"
-            height="955"
-            viewBox="0 0 1925 955"
-          >
-            <defs>
-              <linearGradient
-                id="about-fill"
-                x1="50%"
-                x2="50%"
-                y1="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#FF5367" />
-                <stop offset="100%" stopColor="#FA5E3E" />
-              </linearGradient>
-            </defs>
-            <path
-              fill="url(#about-fill)"
-              id="about-path"
-              d="M37.2 173.2c1014-64 1674-87 1980-69.2 459 26.8 276 112.6 275.8 331.2-.2 145.7-8.1 316.7-23.9 513-913.2 53.2-1522.8 79.9-1828.8 80-306 0-431.7-67.3-377.1-201.6l-26-653.4z"
+          <div className="about-bg">
+            <div
+              className="about-bg-img"
+              style={{
+                backgroundImage: `url("${require("../assets/aboutbg.jpg")}"`
+              }}
             />
-          </svg>
-          <div className="container">
+            <div className="about-bg-grad" />
+          </div>
+          <div className="about-content container">
             <h2>
               What is <br /> MangoHacks?
             </h2>
@@ -439,6 +641,7 @@ class Landing extends Component {
             <p>It’ll be sweet. We promise.</p>
           </div>
         </div>
+        <Faqs />
       </AppContainer>
     );
   }

@@ -6,10 +6,26 @@ body {
 
 @keyframes blob-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(180deg);
+  }
+}
+.goo-particle {
+  animation-iteration-count: 1;
+}
+@media (min-width: 540px) {
+  .goo-particle {
+    animation-iteration-count: infinite;
+  }
+  @keyframes blob-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 }
 
@@ -25,10 +41,61 @@ body {
   font-size: 1.6em;
   position: relative;
   margin-top: -150px;
+  margin-bottom: 60px;
 }
 
 .about {
   padding-top: 60px;
   padding-bottom: 60px;
-  font-size: 1.6em;
+  font-size: 1.3em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.about-bg {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  bottom: -30px;
+  right: -30px;
+  transform: rotate(-1deg);
+  display: block;
+  overflow: hidden;
+  border-radius: 240% 0% 240% 0% / 25% 130% 25% 130%;
+}
+
+.about-bg-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-bg-grad {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #ff5367 0%, #fa5e3e 100%);
+  opacity: 0.8;
+}
+
+.about-content {
+  position: relative;
+}
+
+.faqs {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-size: 1.4em;
+  margin-bottom: 60px;
 }

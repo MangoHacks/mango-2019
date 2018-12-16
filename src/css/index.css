@@ -138,6 +138,10 @@ h2 {
   flex-wrap: wrap;
 }
 
+.schedule h2 {
+  margin-bottom: 16px;
+}
+
 .schedule .day {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 100%;
@@ -145,7 +149,6 @@ h2 {
 }
 
 .schedule .day h3 {
-  margin-top: 0;
   font-size: 1.25em;
 }
 

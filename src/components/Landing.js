@@ -402,6 +402,7 @@ const FaqContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: white;
     width: 100%;
     text-align: left;
     margin-bottom: 12px;

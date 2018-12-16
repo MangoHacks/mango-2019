@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+h2 {
+  font-weight: 800;
+}
+
 @keyframes blob-spin {
   from {
     transform: rotate(180deg);

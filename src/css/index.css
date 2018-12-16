@@ -4,6 +4,11 @@ body {
   padding: 0;
 }
 
+*:focus {
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
 @keyframes blob-spin {
   from {
     transform: rotate(0deg);
@@ -31,4 +36,107 @@ body {
   padding-top: 60px;
   padding-bottom: 60px;
   font-size: 1.6em;
+}
+
+/* ---------------------------- */
+
+/* Registatrion */
+.register-mango {
+  position: absolute;
+  right: 0;
+  height: 100px;
+  z-index: -1;
+}
+
+.registration-card {
+  background-color: #fff;
+  border-radius: 20px;
+  margin: auto;
+  width: 700px;
+  box-shadow: -1px 3px 64px -17px rgba(0, 0, 0, 0.19);
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 3rem 5rem;
+  line-height: 2.5;
+}
+
+.registration-card label {
+  font-weight: 600;
+}
+
+.registration-card h1 {
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.registration-card input,
+.registration-card select {
+  background: #f6f8fa;
+  border: none;
+  border-radius: 50px;
+}
+.registration-card input:focus,
+.registration-card select:focus {
+  border: 1px solid #f6f8fa;
+  background: white;
+}
+
+.registration-card button {
+  border-radius: 50px;
+  border: none;
+  color: #fff;
+  background-color: #ff4e4e;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 2px 0px;
+  width: 100%;
+}
+
+.registration-card button:hover {
+  cursor: pointer;
+}
+
+.mlh-link {
+  text-decoration: none;
+  color: black;
+}
+
+.mlh-link:hover {
+  cursor: pointer;
+  color: #ff4e4a;
+  text-decoration: none;
+}
+
+/* ---------------------------- */
+
+@media only screen and (max-width: 750px) {
+  .registration-card {
+    width: 550px !important;
+    padding: 4rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .registration-card {
+    width: 490px !important;
+    padding: 4rem;
+    padding: 2rem 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .registration-card {
+    width: 350px !important;
+    padding: 4rem;
+    padding: 2rem 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .registration-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }

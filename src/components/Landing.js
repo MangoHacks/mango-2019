@@ -593,6 +593,92 @@ function Faqs(props) {
   );
 }
 
+function Schedule(props) {
+  return (
+    <section className="schedule">
+      <div className="container">
+        <h2 className="heading global-secondary-color generalReveal">
+          Schedule
+        </h2>
+        <div className="days">
+          <div className="day generalReveal">
+            <h3>Friday</h3>
+            <ul className="times">
+              <li>
+                <span className="time global-accent-color">6:00pm</span>{" "}
+                Check-In
+              </li>
+              <li>
+                <span className="time global-accent-color">7:00pm</span> Dinner
+              </li>
+              <li>
+                <span className="time global-accent-color">8:30pm</span> Opening
+                Ceremony
+              </li>
+              <li>
+                <span className="time global-accent-color">9:30pm</span> Team
+                Building + Sponsor Fair
+              </li>
+              <li>
+                <span className="time global-accent-color">10:00pm</span>{" "}
+                Hacking Begins
+              </li>
+            </ul>
+          </div>
+          <div className="day generalReveal">
+            <h3>Saturday</h3>
+            <ul className="times">
+              <li>
+                <span className="time global-accent-color">12:30am</span>{" "}
+                Midnight Snack
+              </li>
+              <li>
+                <span className="time global-accent-color">7:30am</span>{" "}
+                Breakfast
+              </li>
+              <li>
+                <span className="time global-accent-color">12:30pm</span> Lunch
+              </li>
+              <li>
+                <span className="time global-accent-color">7:00pm</span> Dinner
+              </li>
+            </ul>
+          </div>
+          <div className="day generalReveal">
+            <h3>Sunday</h3>
+            <ul className="times">
+              <li>
+                <span className="time global-accent-color">7:00am</span> Devpost
+                Submissions Due
+              </li>
+              <li>
+                <span className="time global-accent-color">8:00am</span>{" "}
+                Breakfast
+              </li>
+              <li>
+                <span className="time global-accent-color">9:00am</span> Hacking
+                Ends
+              </li>
+              <li>
+                <span className="time global-accent-color">10:00am</span> Expo
+                Begins
+              </li>
+              <li>
+                <span className="time global-accent-color">12:00pm</span>{" "}
+                Closing Ceremony Begins
+              </li>
+              <li>
+                <span className="time global-accent-color">1:00pm</span> End/Go
+                Home
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 class Landing extends Component {
   render() {
     return (
@@ -643,6 +729,7 @@ class Landing extends Component {
           </div>
         </div>
         <Faqs />
+        <Schedule />
       </AppContainer>
     );
   }

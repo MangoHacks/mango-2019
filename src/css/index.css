@@ -13,6 +13,10 @@ h2 {
   outline: 0 !important;
 }
 
+.gooball svg {
+  overflow: visible;
+}
+
 @keyframes blob-spin {
   from {
     transform: rotate(180deg);
@@ -106,7 +110,81 @@ h2 {
   padding-top: 60px;
   padding-bottom: 60px;
   font-size: 1.4em;
+}
+
+.schedule {
+  padding-top: 60px;
+  padding-bottom: 80px;
+  font-size: 1.28em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  position: relative;
+  background-image: linear-gradient(0deg, #ff5367 0%, #fa5e3e 100%);
   margin-bottom: 60px;
+}
+
+.schedule .days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.schedule .days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.schedule .day {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+
+.schedule .day h3 {
+  margin-top: 0;
+  font-size: 1.25em;
+}
+
+@media (min-width: 490px) {
+  .schedule .day {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 33.33%;
+    flex: 1 1 33.33%;
+  }
+}
+
+.schedule .day .times {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+
+@media (min-width: 760px) {
+  .schedule .day .times {
+    padding-right: 16px;
+  }
+}
+
+.schedule .day .times li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.schedule .day .times .time {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 20px;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
 }
 
 /* ---------------------------- */

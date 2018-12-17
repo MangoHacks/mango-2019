@@ -387,6 +387,44 @@ function Hero() {
   );
 }
 
+function About(pros) {
+  return (
+    <div className="about">
+      <div className="about-bg">
+        <div
+          className="about-bg-img"
+          style={{
+            backgroundImage: `url("${require("../assets/aboutbg.jpg")}"`
+          }}
+        />
+        <div className="about-bg-grad" />
+      </div>
+      <div className="about-content container">
+        <h2>
+          What is <br /> MangoHacks?
+        </h2>
+        <p>
+          MangoHacks is a chance to meet new people, learn something, make
+          something, dream along, and have fun.
+        </p>
+        <p>
+          Everyone is welcomed - from the most experienced hackers and builders
+          to the thinkers and the curious who have never heard of a hackathon.
+          Regardless of your experience, there is something for you at
+          MangoHacks.
+        </p>
+        <p>
+          We’d love for you to come learn something new, take the things you
+          love (sports, art, traveling, dogs!) or care about (poverty, sea level
+          rise, hunger) and combine them with techonology to make something
+          different, something cool, or something to improve the world.
+        </p>
+        <p>It’ll be sweet. We promise.</p>
+      </div>
+    </div>
+  );
+}
+
 const FaqContainer = styled.div`
   margin: 0 -16px;
   .trigger {
@@ -689,6 +727,45 @@ function Schedule(props) {
   );
 }
 
+function Sponsors(props) {
+  const tier3 = [
+    {
+      name: "ExpressScripts",
+      link: "https://2018.mangohacks.com/img/sponsors/express.png",
+      logo: require("../assets/sponsors/express-scripts.png")
+    },
+    {
+      name: "GE",
+      link: "https://www.ge.com/",
+      logo: require("../assets/sponsors/ge.png")
+    },
+    {
+      name: "Carnival",
+      link: "https://www.carnival.com/",
+      logo: require("../assets/sponsors/carnival.png")
+    }
+  ];
+
+  const tier12 = [
+    {
+      name: "Ultiamte Software",
+      link: "https://www.ultimatesoftware.com/",
+      logo: require("../assets/sponsors/ultimate.png")
+    }
+  ];
+
+  return (
+    <div className="sponsors">
+      <h2>Sponsors</h2>
+      <h4>MangoHacks is possible thanks to these amazing people.</h4>
+      <div className="sponsors-container">
+        <div className="tier tier-3" />
+        <div className="tier tier-12" />
+      </div>
+    </div>
+  );
+}
+
 class Landing extends Component {
   render() {
     return (
@@ -704,40 +781,7 @@ class Landing extends Component {
             by students for students.
           </p>
         </div>
-        <div className="about">
-          <div className="about-bg">
-            <div
-              className="about-bg-img"
-              style={{
-                backgroundImage: `url("${require("../assets/aboutbg.jpg")}"`
-              }}
-            />
-            <div className="about-bg-grad" />
-          </div>
-          <div className="about-content container">
-            <h2>
-              What is <br /> MangoHacks?
-            </h2>
-            <p>
-              MangoHacks is a chance to meet new people, learn something, make
-              something, dream along, and have fun.
-            </p>
-            <p>
-              Everyone is welcomed - from the most experienced hackers and
-              builders to the thinkers and the curious who have never heard of a
-              hackathon. Regardless of your experience, there is something for
-              you at MangoHacks.
-            </p>
-            <p>
-              We’d love for you to come learn something new, take the things you
-              love (sports, art, traveling, dogs!) or care about (poverty, sea
-              level rise, hunger) and combine them with techonology to make
-              something different, something cool, or something to improve the
-              world.
-            </p>
-            <p>It’ll be sweet. We promise.</p>
-          </div>
-        </div>
+        <About />
         <Faqs />
         <Schedule />
       </AppContainer>

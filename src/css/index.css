@@ -41,9 +41,9 @@ h2 {
   }
 }
 .goo-particle {
-  animation-iteration-count: 1;
+  animation-iteration-count: 2;
 }
-@media (min-width: 540px) {
+/* @media (min-width: 540px) {
   .goo-particle {
     animation-iteration-count: infinite;
   }
@@ -55,7 +55,7 @@ h2 {
       transform: rotate(360deg);
     }
   }
-}
+} */
 
 .container {
   max-width: 960px;

@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Expand from "./Expand";
 
-import { visible } from "ansi-colors";
+import { Facebook, Twitter, Instagram } from "./Icons";
 
 function shuffle(a) {
   var j, x, i;
@@ -97,13 +97,14 @@ function Blob(props) {
                 />
               );
             })}
-            {false &&
+            {/* TODO: Change this back to mirror variance */}
+            {true &&
               balls.map((ball, index) => {
                 const origin = 5 * index + width / 2;
                 let animDir = randFrom(animationDirs);
                 let style = {
                   transformOrigin: `${origin}px ${origin}px`,
-                  animationName: "blob-spin",
+                  animationName: "blob-spin-1",
                   animationDuration: `${animDuration + index * animDurVar}s`,
                   animationDelay: `${index *
                     randBetween(-20, -1) *
@@ -285,7 +286,6 @@ const BlobWrap = styled.div`
 
 const RegisterButton = styled.a`
   color: white;
-  /* background: #fd5756; */
   background-image: linear-gradient(0deg, #ff5367 0%, #fa5e3e 100%);
   border-radius: 100px;
   display: inline-block;
@@ -387,6 +387,44 @@ function Hero() {
   );
 }
 
+function About(pros) {
+  return (
+    <div className="about">
+      <div className="about-bg">
+        <div
+          className="about-bg-img"
+          style={{
+            backgroundImage: `url("${require("../assets/aboutbg.jpg")}"`
+          }}
+        />
+        <div className="about-bg-grad" />
+      </div>
+      <div className="about-content container">
+        <h2>
+          What is <br /> MangoHacks?
+        </h2>
+        <p>
+          MangoHacks is a chance to meet new people, learn something, make
+          something, dream along, and have fun.
+        </p>
+        <p>
+          Everyone is welcomed - from the most experienced hackers and builders
+          to the thinkers and the curious who have never heard of a hackathon.
+          Regardless of your experience, there is something for you at
+          MangoHacks.
+        </p>
+        <p>
+          We’d love for you to come learn something new, take the things you
+          love (sports, art, traveling, dogs!) or care about (poverty, sea level
+          rise, hunger) and combine them with techonology to make something
+          different, something cool, or something to improve the world.
+        </p>
+        <p>It’ll be sweet. We promise.</p>
+      </div>
+    </div>
+  );
+}
+
 const FaqContainer = styled.div`
   margin: 0 -16px;
   .trigger {
@@ -396,19 +434,32 @@ const FaqContainer = styled.div`
     font-family: inherit;
     margin: 0;
     padding: 8px 16px;
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: transparent;
     width: 100%;
     text-align: left;
     margin-bottom: 12px;
+    position: relative;
   }
-  .trigger:hover {
+  .trigger:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
     box-shadow: 0px 1px 11px -2px rgba(0, 0, 0, 0.3);
   }
+  .trigger:hover:before {
+    opacity: 1;
+  }
+
   .answer {
     padding: 2px 16px 36px;
   }
@@ -581,6 +632,16 @@ function Faqs(props) {
 
   return (
     <div className="faqs">
+      <BlobWrap top={getTop(-1 / 12)} left={getLeft(-1 / 9)}>
+        <Blob width={400} height={500} particles={5} radius={30} radVar={18} />
+      </BlobWrap>
+      <BlobWrap
+        deg={Math.random() * 360}
+        top={getTop(1.9 / 5)}
+        left={getLeft(4 / 5)}
+      >
+        <Blob width={500} height={350} particles={4} radius={60} radVar={18} />
+      </BlobWrap>
       <div className="container">
         <h2>FAQs</h2>
 
@@ -592,10 +653,173 @@ function Faqs(props) {
   );
 }
 
+function Schedule(props) {
+  return (
+    <section className="schedule">
+      <div className="container">
+        <h2 className="heading global-secondary-color generalReveal">
+          Schedule
+        </h2>
+        <div className="days">
+          <div className="day generalReveal">
+            <h3>Friday</h3>
+            <ul className="times">
+              <li>
+                <span className="time global-accent-color">6:00pm</span>{" "}
+                Check-In
+              </li>
+              <li>
+                <span className="time global-accent-color">7:00pm</span> Dinner
+              </li>
+              <li>
+                <span className="time global-accent-color">8:30pm</span> Opening
+                Ceremony
+              </li>
+              <li>
+                <span className="time global-accent-color">9:30pm</span> Team
+                Building + Sponsor Fair
+              </li>
+              <li>
+                <span className="time global-accent-color">10:00pm</span>{" "}
+                Hacking Begins
+              </li>
+            </ul>
+          </div>
+          <div className="day generalReveal">
+            <h3>Saturday</h3>
+            <ul className="times">
+              <li>
+                <span className="time global-accent-color">12:30am</span>{" "}
+                Midnight Snack
+              </li>
+              <li>
+                <span className="time global-accent-color">7:30am</span>{" "}
+                Breakfast
+              </li>
+              <li>
+                <span className="time global-accent-color">12:30pm</span> Lunch
+              </li>
+              <li>
+                <span className="time global-accent-color">7:00pm</span> Dinner
+              </li>
+            </ul>
+          </div>
+          <div className="day generalReveal">
+            <h3>Sunday</h3>
+            <ul className="times">
+              <li>
+                <span className="time global-accent-color">7:00am</span> Devpost
+                Submissions Due
+              </li>
+              <li>
+                <span className="time global-accent-color">8:00am</span>{" "}
+                Breakfast
+              </li>
+              <li>
+                <span className="time global-accent-color">9:00am</span> Hacking
+                Ends
+              </li>
+              <li>
+                <span className="time global-accent-color">10:00am</span> Expo
+                Begins
+              </li>
+              <li>
+                <span className="time global-accent-color">12:00pm</span>{" "}
+                Closing Ceremony Begins
+              </li>
+              <li>
+                <span className="time global-accent-color">1:00pm</span> End/Go
+                Home
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Sponsors(props) {
+  const tier3 = [
+    {
+      name: "ExpressScripts",
+      link: "https://www.express-scripts.com/",
+      logo: require("../assets/sponsors/express-scripts.png")
+    },
+    {
+      name: "Carnival",
+      link: "https://www.carnival.com/",
+      logo: require("../assets/sponsors/carnival.png")
+    },
+    {
+      name: "GE",
+      link: "https://www.ge.com/",
+      logo: require("../assets/sponsors/ge.png")
+    },
+    {
+      name: "Google",
+      link: "https://www.google.com/",
+      logo: require("../assets/sponsors/google.png")
+    }
+  ];
+
+  const tier12 = [
+    {
+      name: "Ultiamte Software",
+      link: "https://www.ultimatesoftware.com/",
+      logo: require("../assets/sponsors/ultimate.png")
+    },
+    {
+      name: "Sticker Mule",
+      link: "https://www.stickermule.com/",
+      logo: require("../assets/sponsors/sticker-mule.png")
+    }
+  ];
+
+  return (
+    <div className="sponsors">
+      <div className="container">
+        <h2>Sponsors</h2>
+        <h4>MangoHacks is possible thanks to these amazing people.</h4>
+        <div className="sponsors-container">
+          <div className="tier tier-3">
+            {tier3.map((sponsor, index) => (
+              <div className="logo-wrap" key={index}>
+                <a href={sponsor.link} title={sponsor.name}>
+                  <img src={sponsor.logo} />
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="tier tier-12">
+            {tier12.map((sponsor, index) => (
+              <div className="logo-wrap" key={index}>
+                <a href={sponsor.link} title={sponsor.name}>
+                  <img src={sponsor.logo} />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 class Landing extends Component {
   render() {
     return (
       <AppContainer>
+        <a
+          className="mlh-badge"
+          href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=white"
+          target="_blank"
+        >
+          <img
+            src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg"
+            alt="Major League Hacking 2019 Hackathon Season"
+          />
+        </a>
         <Hero />
         <div className="container intro">
           <h2>A place for discovery</h2>
@@ -607,41 +831,26 @@ class Landing extends Component {
             by students for students.
           </p>
         </div>
-        <div className="about">
-          <div className="about-bg">
-            <div
-              className="about-bg-img"
-              style={{
-                backgroundImage: `url("${require("../assets/aboutbg.jpg")}"`
-              }}
-            />
-            <div className="about-bg-grad" />
-          </div>
-          <div className="about-content container">
-            <h2>
-              What is <br /> MangoHacks?
-            </h2>
-            <p>
-              MangoHacks is a chance to meet new people, learn something, make
-              something, dream along, and have fun.
-            </p>
-            <p>
-              Everyone is welcomed - from the most experienced hackers and
-              builders to the thinkers and the curious who have never heard of a
-              hackathon. Regardless of your experience, there is something for
-              you at MangoHacks.
-            </p>
-            <p>
-              We’d love for you to come learn something new, take the things you
-              love (sports, art, traveling, dogs!) or care about (poverty, sea
-              level rise, hunger) and combine them with techonology to make
-              something different, something cool, or something to improve the
-              world.
-            </p>
-            <p>It’ll be sweet. We promise.</p>
+        <About />
+        <Faqs />
+        <Schedule />
+        <Sponsors />
+        <div className="footer">
+          <div className="container">
+            <div className="social-media">
+              <a target="_blank" href="https://www.facebook.com/MangoHacks">
+                <Facebook fill="#ffffff" />
+              </a>
+              <a target="_blank" href="https://twitter.com/fiumangohacks">
+                <Twitter fill="#ffffff" />
+              </a>
+              <a target="_blank" href="https://instagram.com/fiumangohacks">
+                <Instagram fill="#ffffff" />
+              </a>
+            </div>
+            <div>© MangoHacks.com</div>
           </div>
         </div>
-        <Faqs />
       </AppContainer>
     );
   }

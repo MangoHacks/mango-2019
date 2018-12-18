@@ -1,5 +1,5 @@
 const config = {
-  REGISTER_URL: ""
+  REGISTER_URL: "http://api.mangohacks.com"
 };
 
 export default config;

@@ -1,7 +1,10 @@
-body {
+body,
+html,
+#root {
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 *:focus {
@@ -176,12 +179,72 @@ body {
 
 /* ---------------------------- */
 
+/* Registatrion */
+
+.response {
+  height: 100%;
+  background-color: #f6f8fa;
+}
+
+.response .card {
+  top: 150px;
+  background-color: #fff;
+  width: 600px;
+  margin: auto;
+  border-radius: 20px;
+  border: none;
+  padding: 50px;
+  text-align: center;
+}
+
+.response .card a {
+  color: #000;
+}
+
+.response .card a:hover {
+  color: rgb(255, 81, 81);
+  text-decoration: none;
+}
+
+.response .card h1 {
+  font-weight: 900;
+  font-size: 50px;
+}
+
+.response .card hr {
+  width: 50px;
+  border: 1px solid black;
+  margin: 15px auto;
+}
+
+.response .card h5 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.response .social-media {
+  margin-top: 15px;
+}
+
+.response .social-media img {
+  height: 20px;
+  padding: 0 5px;
+}
+/* ---------------------------- */
+
 @media only screen and (max-width: 750px) {
   .registration-card {
     width: 550px !important;
     padding: 4rem;
     margin-top: 30px;
     margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .response .card {
+    width: 450px;
+    padding: 50px;
   }
 }
 
@@ -199,11 +262,24 @@ body {
     padding: 4rem;
     padding: 2rem 1.8rem;
   }
+  .response .card h1 {
+    font-size: 20px;
+  }
+  .response .card {
+    top: 50px;
+    width: 350px;
+    padding: 50px;
+    font-size: 15px;
+  }
 }
 
 @media only screen and (max-width: 390px) {
   .registration-card {
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+
+  .response .card {
+    width: 290px;
   }
 }

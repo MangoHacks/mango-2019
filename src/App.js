@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Landing from "./components/Landing";
 import Register from "./components/Register";
+import RegistrationResponse from "./components/RegistrationResponse";
 
 class App extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/response" component={RegistrationResponse} />
         </Switch>
       </BrowserRouter>
     );

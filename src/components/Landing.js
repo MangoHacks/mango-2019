@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Expand from "./Expand";
 
-import { visible } from "ansi-colors";
+import { Facebook, Twitter, Instagram } from "./Icons";
 
 function shuffle(a) {
   var j, x, i;
@@ -285,7 +285,6 @@ const BlobWrap = styled.div`
 
 const RegisterButton = styled.a`
   color: white;
-  /* background: #fd5756; */
   background-image: linear-gradient(0deg, #ff5367 0%, #fa5e3e 100%);
   border-radius: 100px;
   display: inline-block;
@@ -434,8 +433,6 @@ const FaqContainer = styled.div`
     font-family: inherit;
     margin: 0;
     padding: 8px 16px;
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -444,10 +441,24 @@ const FaqContainer = styled.div`
     width: 100%;
     text-align: left;
     margin-bottom: 12px;
+    position: relative;
   }
-  .trigger:hover {
+  .trigger:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
     box-shadow: 0px 1px 11px -2px rgba(0, 0, 0, 0.3);
   }
+  .trigger:hover:before {
+    opacity: 1;
+  }
+
   .answer {
     padding: 2px 16px 36px;
   }
@@ -731,8 +742,13 @@ function Sponsors(props) {
   const tier3 = [
     {
       name: "ExpressScripts",
-      link: "https://2018.mangohacks.com/img/sponsors/express.png",
+      link: "https://www.express-scripts.com/",
       logo: require("../assets/sponsors/express-scripts.png")
+    },
+    {
+      name: "Carnival",
+      link: "https://www.carnival.com/",
+      logo: require("../assets/sponsors/carnival.png")
     },
     {
       name: "GE",
@@ -740,9 +756,9 @@ function Sponsors(props) {
       logo: require("../assets/sponsors/ge.png")
     },
     {
-      name: "Carnival",
-      link: "https://www.carnival.com/",
-      logo: require("../assets/sponsors/carnival.png")
+      name: "Google",
+      link: "https://www.google.com/",
+      logo: require("../assets/sponsors/google.png")
     }
   ];
 
@@ -751,16 +767,39 @@ function Sponsors(props) {
       name: "Ultiamte Software",
       link: "https://www.ultimatesoftware.com/",
       logo: require("../assets/sponsors/ultimate.png")
+    },
+    {
+      name: "Sticker Mule",
+      link: "https://www.stickermule.com/",
+      logo: require("../assets/sponsors/sticker-mule.png")
     }
   ];
 
   return (
     <div className="sponsors">
-      <h2>Sponsors</h2>
-      <h4>MangoHacks is possible thanks to these amazing people.</h4>
-      <div className="sponsors-container">
-        <div className="tier tier-3" />
-        <div className="tier tier-12" />
+      <div className="container">
+        <h2>Sponsors</h2>
+        <h4>MangoHacks is possible thanks to these amazing people.</h4>
+        <div className="sponsors-container">
+          <div className="tier tier-3">
+            {tier3.map((sponsor, index) => (
+              <div className="logo-wrap" key={index}>
+                <a href={sponsor.link} title={sponsor.name}>
+                  <img src={sponsor.logo} />
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="tier tier-12">
+            {tier12.map((sponsor, index) => (
+              <div className="logo-wrap" key={index}>
+                <a href={sponsor.link} title={sponsor.name}>
+                  <img src={sponsor.logo} />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -770,6 +809,16 @@ class Landing extends Component {
   render() {
     return (
       <AppContainer>
+        <a
+          className="mlh-badge"
+          href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=white"
+          target="_blank"
+        >
+          <img
+            src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg"
+            alt="Major League Hacking 2019 Hackathon Season"
+          />
+        </a>
         <Hero />
         <div className="container intro">
           <h2>A place for discovery</h2>
@@ -784,6 +833,23 @@ class Landing extends Component {
         <About />
         <Faqs />
         <Schedule />
+        <Sponsors />
+        <div className="footer">
+          <div className="container">
+            <div className="social-media">
+              <a target="_blank" href="https://www.facebook.com/MangoHacks">
+                <Facebook fill="#ffffff" />
+              </a>
+              <a target="_blank" href="https://twitter.com/fiumangohacks">
+                <Twitter fill="#ffffff" />
+              </a>
+              <a target="_blank" href="https://instagram.com/fiumangohacks">
+                <Instagram fill="#ffffff" />
+              </a>
+            </div>
+            <div>© MangoHacks.com</div>
+          </div>
+        </div>
       </AppContainer>
     );
   }

@@ -97,13 +97,14 @@ function Blob(props) {
                 />
               );
             })}
-            {false &&
+            {/* TODO: Change this back to mirror variance */}
+            {true &&
               balls.map((ball, index) => {
                 const origin = 5 * index + width / 2;
                 let animDir = randFrom(animationDirs);
                 let style = {
                   transformOrigin: `${origin}px ${origin}px`,
-                  animationName: "blob-spin",
+                  animationName: "blob-spin-1",
                   animationDuration: `${animDuration + index * animDurVar}s`,
                   animationDelay: `${index *
                     randBetween(-20, -1) *

@@ -50,7 +50,7 @@ h2 {
   }
 }
 .goo-particle {
-  animation-iteration-count: 2;
+  animation-iteration-count: infinite;
 }
 /* @media (min-width: 540px) {
   .goo-particle {

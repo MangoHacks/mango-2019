@@ -332,16 +332,10 @@ function Hero() {
 
         {/* <HeroBg /> */}
         <BlobWrap top={getTop(1 / 24)} left={getLeft(-1 / 9)}>
-          <Blob width={900} height={500} particles={2} radius={20} radVar={1} />
+          {/* <Blob width={900} height={500} particles={2} radius={20} radVar={1} /> */}
         </BlobWrap>
         <BlobWrap top={getTop(-2 / 7)} left={getLeft(6 / 10)}>
-          <Blob
-            width={800}
-            height={600}
-            radius={9}
-            radVar={33}
-            particles={2}
-          />
+          {/* <Blob width={800} height={600} radius={9} radVar={33} particles={2} /> */}
           {/* <Blob
             width={800}
             height={600}
@@ -383,7 +377,7 @@ function Hero() {
         top={getTop(3.9 / 5)}
         left={getLeft(4 / 5)}
       >
-        <Blob width={900} height={500} particles={2} radius={50} radVar={10} />
+        {/* <Blob width={900} height={500} particles={2} radius={50} radVar={10} /> */}
 
         {/* <Blob width={500} height={350} particles={4} radius={70} radVar={18} /> */}
       </BlobWrap>
@@ -447,7 +441,11 @@ const FaqContainer = styled.div`
     text-align: left;
     margin-bottom: 12px;
     position: relative;
+    translate(10px);
+
+
   }
+
   .trigger:before {
     content: "";
     position: absolute;
@@ -458,10 +456,12 @@ const FaqContainer = styled.div`
     height: 100%;
     transition: all 0.2s ease-in-out;
     opacity: 0;
-    box-shadow: 0px 1px 11px -2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 11px -2px rgba(0, 0, 0, 0.2);
+    translate(10px);
   }
   .trigger:hover:before {
     opacity: 1;
+
   }
 
   .answer {
@@ -521,8 +521,9 @@ function Faqs(props) {
       answer: (
         <React.Fragment>
           <p>
-            MangoHacks ’18 will take place at Florida International University’s
-            PG6 Tech Station from February 1St to 3rd.
+            MangoHacks 2019 will take place at Florida International
+            University’s PG6 Tech Station from February 1st - 3rd. Get
+            Directions
           </p>
           <a
             target="_blank"
@@ -539,8 +540,8 @@ function Faqs(props) {
         <React.Fragment>
           <p>
             ZERO! FREE! Nada. Zip. $0. Everything we provide will be free, from
-            food, to swag, and snack. You only need to worry about what you’ll
-            achieve during the weekend.
+            food, to swag, and snacks. You only need to worry about what you’ll
+            learn and build throughout the weekend.
           </p>
         </React.Fragment>
       )
@@ -551,8 +552,8 @@ function Faqs(props) {
         <React.Fragment>
           <p>
             People will arrive between 6pm and 8pm on Friday, February 1st.
-            Hacking will start at 10pm on Friday and go until 8am on Sunday.
-            Closing ceremony will end by 1pm on Sunday.
+            Hacking will start at 10pm on Friday the 1st and will go until 8am
+            on Sunday the 3rd. Closing ceremony will be done by 1pm on Sunday.
           </p>
         </React.Fragment>
       )
@@ -563,9 +564,7 @@ function Faqs(props) {
         <React.Fragment>
           <p>
             We encourage car pooling and a good ol' road trip. However, keep an
-            eye out for info on buses coming to North Florida schools. Schools
-            with the most registrations are more likely to get a bus, so get
-            your friends to apply too.
+            eye out for details on gas reimbursements and bus routes!
           </p>
         </React.Fragment>
       )
@@ -577,8 +576,8 @@ function Faqs(props) {
           <p>
             Anyone who is currently a college student or who graduated in the
             past year is welcome to participate. If it has been a while since
-            you were a student you can still participate as a mentor for the
-            attendees.
+            you were a student we'd still love to have you as a mentor for the
+            hackers.
           </p>
         </React.Fragment>
       )
@@ -588,9 +587,8 @@ function Faqs(props) {
       answer: (
         <React.Fragment>
           <p>
-            You’ll need an ID and the stuff you’ll need throughout the weekend.
-            Laptop, chargers, phone, the basics. You’ll probably also want to
-            bring some basic hygiene products.
+            You’ll need an ID, laptop, chargers, phone, you know, the basics.
+            You’ll probably also want to bring some basic hygiene products.
           </p>
         </React.Fragment>
       )
@@ -601,8 +599,9 @@ function Faqs(props) {
         <React.Fragment>
           <p>
             Don’t be afraid if you don’t think you have enough experience, a
-            team or an idea. A hackathon is a great place for learning. We’ll
-            have great mentors and tools to help you with development.
+            team or an idea. MangoHacks has always believed that
+            <b>anyone can hack</b>, which is why we’ll have great mentors and
+            tools to help you with your projects.
           </p>
         </React.Fragment>
       )
@@ -612,11 +611,11 @@ function Faqs(props) {
       answer: (
         <React.Fragment>
           <p>
-            It’s no biggie. You can hack solo, but the more the merrier. You can
-            join a team of up to four people. You don’t need to have a team
-            ready before the event - there will be amazing people who you can
-            join at the event. If you have some friends in mind though, you’re
-            more than welcome to stay together.
+            Don't worry! You can hack solo, but the more the merrier. You don’t
+            need to have a team ready before the event - there will be amazing
+            people who you can join at the event. If you have some friends in
+            mind though, you’re more than welcome to stay together, but make
+            sure it's 4 people to a team.
           </p>
         </React.Fragment>
       )
@@ -626,7 +625,7 @@ function Faqs(props) {
       answer: (
         <React.Fragment>
           <p>
-            If you have any other questions, hit us up.{" "}
+            If you have any other questions, hit us up{" "}
             <a href="mailto:team@mangohacks.com">team@mangohacks.com</a>
           </p>
         </React.Fragment>
@@ -666,34 +665,38 @@ function Schedule(props) {
         </h2>
         <div className="days">
           <div className="day generalReveal">
-            <h3>Friday</h3>
+            <h3>
+              <b>Friday</b>
+            </h3>
             <ul className="times">
               <li>
-                <span className="time global-accent-color">6:00pm</span>{" "}
+                <span className="time global-accent-color">5:00pm</span>
                 Check-In
               </li>
               <li>
-                <span className="time global-accent-color">7:00pm</span> Dinner
+                <span className="time global-accent-color">6:00pm</span> Dinner
               </li>
               <li>
-                <span className="time global-accent-color">8:30pm</span> Opening
+                <span className="time global-accent-color">7:00pm</span> Opening
                 Ceremony
               </li>
               <li>
-                <span className="time global-accent-color">9:30pm</span> Team
-                Building + Sponsor Fair
+                <span className="time global-accent-color">9:00pm</span> Hacking
+                Begins
               </li>
               <li>
-                <span className="time global-accent-color">10:00pm</span>{" "}
-                Hacking Begins
+                <span className="time global-accent-color">10:00pm</span> Team
+                Building
               </li>
             </ul>
           </div>
           <div className="day generalReveal">
-            <h3>Saturday</h3>
+            <h3>
+              <b>Saturday</b>
+            </h3>
             <ul className="times">
               <li>
-                <span className="time global-accent-color">12:30am</span>{" "}
+                <span className="time global-accent-color">12:0am</span>{" "}
                 Midnight Snack
               </li>
               <li>
@@ -709,14 +712,20 @@ function Schedule(props) {
             </ul>
           </div>
           <div className="day generalReveal">
-            <h3>Sunday</h3>
+            <h3>
+              <b>Sunday</b>
+            </h3>
             <ul className="times">
+              <li>
+                <span className="time global-accent-color">12:0am</span>{" "}
+                Midnight Snack
+              </li>
               <li>
                 <span className="time global-accent-color">7:00am</span> Devpost
                 Submissions Due
               </li>
               <li>
-                <span className="time global-accent-color">8:00am</span>{" "}
+                <span className="time global-accent-color">8:15am</span>{" "}
                 Breakfast
               </li>
               <li>
@@ -732,8 +741,8 @@ function Schedule(props) {
                 Closing Ceremony Begins
               </li>
               <li>
-                <span className="time global-accent-color">1:00pm</span> End/Go
-                Home
+                <span className="time global-accent-color">1:00pm</span>{" "}
+                MangoHacks Ends
               </li>
             </ul>
           </div>
@@ -784,7 +793,9 @@ function Sponsors(props) {
     <div className="sponsors">
       <div className="container">
         <h2>Sponsors</h2>
-        <h4>MangoHacks is possible thanks to these amazing people.</h4>
+        <h5 className="text-muted" style={{ "margin-bottom": "50px" }}>
+          MangoHacks is possible thanks to these amazing people.
+        </h5>
         <div className="sponsors-container">
           <div className="tier tier-3">
             {tier3.map((sponsor, index) => (

@@ -19,7 +19,13 @@ class Register extends React.Component {
     });
 
     try {
-      const response = registerService.register(fields);
+      const response = await registerService.register(fields);
+      if (response.success) {
+        this.props.history.push({
+          pathname: "/response",
+          state: { detail: response }
+        });
+      }
     } catch (e) {
       console.log(e);
     }
@@ -115,10 +121,18 @@ class Register extends React.Component {
             <div className="form-group">
               <label htmlFor="levelOfStudy">Level of study</label>
               <select required className="form-control" name="levelOfStudy">
-                <option key="FRESHMAN">Freshman</option>
-                <option key="SOPHMORE">Sophmore</option>
-                <option key="JUNIOR">JUNIOR</option>
-                <option key="SENIOR">Senior</option>
+                <option key="FRESHMAN" value="FRESHMAN">
+                  Freshman
+                </option>
+                <option key="SOPHMORE" value="SOPHMORE">
+                  Sophmore
+                </option>
+                <option key="JUNIOR" value="JUNIOR">
+                  Junior
+                </option>
+                <option key="SENIOR" value="SENIOR">
+                  Senior
+                </option>
               </select>
             </div>
 
@@ -145,10 +159,18 @@ class Register extends React.Component {
             <div className="form-group">
               <label htmlFor="gender">Gender</label>
               <select required className="form-control" name="gender">
-                <option key="MALE">Male</option>
-                <option key="FEMALE">Female</option>
-                <option key="OTHER">Other</option>
-                <option key="NORESPONSE">No response</option>
+                <option key="MALE" value="MALE">
+                  Male
+                </option>
+                <option key="FEMALE" value="FEMALE">
+                  Female
+                </option>
+                <option key="OTHER" value="OTHER">
+                  Other
+                </option>
+                <option key="NORESPONSE" value="NORESPONSE">
+                  No response
+                </option>
               </select>
             </div>
 
@@ -156,10 +178,18 @@ class Register extends React.Component {
             <div className="form-group">
               <label htmlFor="shirtSize">Shirt Size</label>
               <select required className="form-control" name="shirtSize">
-                <option key="SMALL">Small</option>
-                <option key="MEDIUM">Medium</option>
-                <option key="LARGE">Large</option>
-                <option key="XLARGE">X-Large</option>
+                <option key="SMALL" value="SMALL">
+                  Small
+                </option>
+                <option key="MEDIUM" value="MEDIUM">
+                  Medium
+                </option>
+                <option key="LARGE" value="LARGE">
+                  Large
+                </option>
+                <option key="XLARGE" value="XLARGE">
+                  X-Large
+                </option>
               </select>
             </div>
 

@@ -286,8 +286,24 @@ h2 {
 /* ---------------------------- */
 
 /* Registatrion */
+
+.reg-blob {
+  position: fixed;
+  right: 0;
+  z-index: -1;
+  top: 0;
+}
+
+.reg-blob-bottom {
+  position: fixed;
+  left: 0;
+
+  z-index: -1;
+  bottom: 0;
+}
+
 .register-mango {
-  position: absolute;
+  position: fixed;
   right: 0;
   height: 100px;
   z-index: -1;
@@ -339,6 +355,10 @@ h2 {
 
 .registration-card button:hover {
   cursor: pointer;
+}
+
+.registration-card .loading {
+  text-align: center;
 }
 
 .mlh-link {
@@ -414,6 +434,9 @@ h2 {
     margin-top: 30px;
     margin-bottom: 30px;
   }
+  .register-mango {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -433,16 +456,14 @@ h2 {
 
 @media only screen and (max-width: 480px) {
   .registration-card {
-    width: 350px !important;
-    padding: 4rem;
-    padding: 2rem 1.8rem;
+    width: 95% !important;
   }
   .response .card h1 {
     font-size: 20px;
   }
   .response .card {
     top: 50px;
-    width: 350px;
+    width: 95% !important;
     padding: 50px;
     font-size: 15px;
   }

@@ -305,13 +305,14 @@ const RegisterButton = styled.a`
     bottom: 0;
     right: 0;
     background: transparent;
-    box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.22);
+    // box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.22);
     border-radius: 100px;
     padding: 12px 100px;
   }
 
   :hover {
-    opacity: 0.9;
+    color: white !important;
+    text-decoration: none;
   }
 `;
 
@@ -329,29 +330,30 @@ function Hero() {
       <HeroContainer>
         <FilterDefs />
 
-        <HeroBg />
+        {/* <HeroBg /> */}
         <BlobWrap top={getTop(1 / 24)} left={getLeft(-1 / 9)}>
-          <Blob
-            width={400}
-            height={500}
-            particles={5}
-            radius={57}
-            radVar={18}
-          />
+          <Blob width={900} height={500} particles={2} radius={20} radVar={1} />
         </BlobWrap>
         <BlobWrap top={getTop(-2 / 7)} left={getLeft(6 / 10)}>
           <Blob
             width={800}
             height={600}
+            radius={9}
+            radVar={33}
+            particles={2}
+          />
+          {/* <Blob
+            width={800}
+            height={600}
             radius={25}
             radVar={33}
             particles={6}
-          />
+          /> */}
         </BlobWrap>
 
         <HeroContent>
           <div className="mangowrap">
-            <Mango style={{ width: "100%", height: "auto" }} />
+            <Mango style={{ width: "100%", height: "130px" }} />
           </div>
           <div className="tagline">It just got sweeter</div>
           <h1 className="title">MangoHacks</h1>
@@ -359,7 +361,7 @@ function Hero() {
             Feb 1st - 3rd | Florida International University
           </div>
 
-          <RegisterButton href="#">Register</RegisterButton>
+          <RegisterButton href="/register">Register</RegisterButton>
         </HeroContent>
       </HeroContainer>
       <BlobWrap
@@ -368,12 +370,12 @@ function Hero() {
         left={getLeft(0.43 / 5)}
       >
         <Blob
-          width={500}
-          height={350}
-          particles={4}
-          radius={65}
-          radVar={18}
-          mirrorVariance={false}
+        // width={500}
+        // height={350}
+        // particles={4}
+        // radius={65}
+        // radVar={18}
+        // mirrorVariance={false}
         />
       </BlobWrap>
       <BlobWrap
@@ -381,7 +383,9 @@ function Hero() {
         top={getTop(3.9 / 5)}
         left={getLeft(4 / 5)}
       >
-        <Blob width={500} height={350} particles={4} radius={70} radVar={18} />
+        <Blob width={900} height={500} particles={2} radius={50} radVar={10} />
+
+        {/* <Blob width={500} height={350} particles={4} radius={70} radVar={18} /> */}
       </BlobWrap>
     </React.Fragment>
   );

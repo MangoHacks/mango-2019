@@ -42,3 +42,92 @@ export function Instagram(props) {
     </svg>
   );
 }
+
+export function RegBlob(props) {
+  return (
+    <svg
+      width="827px"
+      height="976px"
+      viewBox="0 0 827 976"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <linearGradient
+          x1="50%"
+          y1="0%"
+          x2="50%"
+          y2="100%"
+          id="linearGradient-1"
+        >
+          <stop stop-color="#FF4949" offset="0%" />
+          <stop stop-color="#FF5353" offset="100%" />
+        </linearGradient>
+      </defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          id="Desktop-HD"
+          transform="translate(-613.000000, 0.000000)"
+          fill="url(#linearGradient-1)"
+        >
+          <path
+            d="M1048.63219,-151.483252 C1048.63219,-151.483252 341.718591,48.2236427 728.915468,208.058501 C1116.11235,367.89336 1148.86146,507.549501 1133.3363,877.878992 C1117.81115,1248.20848 1724,450.955974 1724,450.955974 L1388.78172,-232 L1048.63219,-151.483252 Z"
+            id="Path-4"
+          />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function RegBlobBottom(props) {
+  return (
+    <svg
+      width="158px"
+      height="355px"
+      viewBox="0 0 158 355"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <linearGradient
+          x1="50%"
+          y1="2.88379992%"
+          x2="50%"
+          y2="99.3801818%"
+          id="linearGradient-1"
+        >
+          <stop stop-color="#FF4E49" offset="0%" />
+          <stop stop-color="#FF5F43" offset="100%" />
+        </linearGradient>
+      </defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          id="Desktop-HD"
+          transform="translate(0.000000, -669.000000)"
+          fill="url(#linearGradient-1)"
+        >
+          <path
+            d="M319.155869,1041.54684 C300.044109,1071.56449 186.194559,1196.89548 48.209852,1025.68103 C48.209852,1025.68103 17.7605355,965.785383 -78.4203703,989.979787 C-174.601276,1014.17419 -356.742782,971.248908 -265.746844,838.782177 C-174.750905,706.315446 116.443899,806.492334 235.146226,849.053833 C353.848553,891.615332 338.267629,1011.52919 319.155869,1041.54684 Z"
+            id="Path-7"
+            transform="translate(20.914299, 943.261254) rotate(-130.000000) translate(-20.914299, -943.261254) "
+          />
+        </g>
+      </g>
+    </svg>
+  );
+}

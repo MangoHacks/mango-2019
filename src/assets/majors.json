@@ -9,6 +9,9 @@
     "major": "Information Technology"
   },
   {
+    "major": "Information Systems"
+  },
+  {
     "major": "Software Engineering"
   },
   {
@@ -16,6 +19,9 @@
   },
   {
     "major": "Business"
+  },
+  {
+    "major": "Business Administration"
   },
   {
     "major": "Marketing"
@@ -39,9 +45,9 @@
     "major": "Arts"
   },
   {
-    "major": "Exploratory"
+    "major": "Design"
   },
   {
-    "major": "Undecided"
+    "major": "Other"
   }
 ]

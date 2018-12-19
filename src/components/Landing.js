@@ -402,8 +402,8 @@ function About(pros) {
           What is <br /> MangoHacks?
         </h2>
         <p>
-          MangoHacks is a chance to meet new people, learn something, make
-          something, dream along, and have fun.
+          MangoHacks is a chance to meet new people, learn cool things, build
+          something new, dream big, and have fun.
         </p>
         <p>
           Everyone is welcomed - from the most experienced hackers and builders
@@ -599,7 +599,7 @@ function Faqs(props) {
         <React.Fragment>
           <p>
             Don’t be afraid if you don’t think you have enough experience, a
-            team or an idea. MangoHacks has always believed that
+            team or an idea. MangoHacks has always believed that{" "}
             <b>anyone can hack</b>, which is why we’ll have great mentors and
             tools to help you with your projects.
           </p>
@@ -843,7 +843,8 @@ class Landing extends Component {
             collaboration, growth, innovation, and fun. We will welcome 500+
             students from Florida and across the country, amazing mentors, and
             wonderful sponsors to create amazing things. MangoHacks is organized
-            by students for students.
+            by students for students, with the strong belief that anyone can
+            hack
           </p>
         </div>
         <About />
@@ -863,7 +864,7 @@ class Landing extends Component {
                 <Instagram fill="#ffffff" />
               </a>
             </div>
-            <div>© MangoHacks.com</div>
+            <div>© mangohacks.com</div>
           </div>
         </div>
       </AppContainer>

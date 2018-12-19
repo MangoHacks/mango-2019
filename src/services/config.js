@@ -1,3 +1,3 @@
-const config = { REGISTER_URL: "http://api.mangohacks.com" };
+const config = { REGISTER_URL: "https://api.mangohacks.com" };
 
 export default config;

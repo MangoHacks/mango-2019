@@ -98,7 +98,7 @@ function Blob(props) {
               );
             })}
             {/* TODO: Change this back to mirror variance */}
-            {true &&
+            {false &&
               balls.map((ball, index) => {
                 const origin = 5 * index + width / 2;
                 let animDir = randFrom(animationDirs);
@@ -343,7 +343,7 @@ function Hero() {
           <Blob
             width={800}
             height={600}
-            radius={15}
+            radius={25}
             radVar={33}
             particles={6}
           />
@@ -371,7 +371,7 @@ function Hero() {
           width={500}
           height={350}
           particles={4}
-          radius={70}
+          radius={65}
           radVar={18}
           mirrorVariance={false}
         />

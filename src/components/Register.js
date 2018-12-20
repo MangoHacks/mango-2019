@@ -12,12 +12,16 @@ import majors from "../assets/majors.json";
 class Register extends React.Component {
   state = { resume: "Upload resume", loading: false };
 
+  validateResume = file => file.type === "application/pdf";
+
   submit = async e => {
     e.preventDefault();
 
     const form = new FormData(e.target);
 
     const resume = form.get("resume");
+
+    const isValidResume = this.validateResume(resume);
 
     let values = [...form.values()];
     let fields = {};
@@ -26,6 +30,7 @@ class Register extends React.Component {
     });
 
     try {
+      if (!isValidResume) throw "PDF's only";
       if (resume.size == 0) throw "Resume required.";
 
       this.setState({ loading: true });

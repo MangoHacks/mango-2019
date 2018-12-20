@@ -131,3 +131,89 @@ export function RegBlobBottom(props) {
     </svg>
   );
 }
+
+export function ResBlobBottom(props) {
+  return (
+    <svg
+      width="870px"
+      height="586px"
+      viewBox="0 0 870 586"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <linearGradient
+          x1="50%"
+          y1="0%"
+          x2="50%"
+          y2="100%"
+          id="linearGradient-1"
+        >
+          <stop stop-color="#FF4949" offset="0%" />
+          <stop stop-color="#FF5353" offset="100%" />
+        </linearGradient>
+      </defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g
+          id="Desktop-HD"
+          transform="translate(-570.000000, -438.000000)"
+          fill="url(#linearGradient-1)"
+        >
+          <path
+            d="M1054.13219,470.016748 C1054.13219,470.016748 347.218591,669.723643 734.415468,829.558501 C1121.61235,989.39336 1154.36146,1129.0495 1138.8363,1499.37899 C1123.31115,1869.70848 1729.5,1072.45597 1729.5,1072.45597 L1394.28172,389.5 L1054.13219,470.016748 Z"
+            id="Path-4"
+            transform="translate(1174.000000, 993.500000) rotate(90.000000) translate(-1174.000000, -993.500000) "
+          />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function ResBlobTop(props) {
+  return (
+    <svg
+      width="401px"
+      height="261px"
+      viewBox="0 0 401 261"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <linearGradient
+          x1="50%"
+          y1="2.88379992%"
+          x2="50%"
+          y2="99.3801818%"
+          id="linearGradient-1"
+        >
+          <stop stop-color="#FF4E49" offset="0%" />
+          <stop stop-color="#FF5F43" offset="100%" />
+        </linearGradient>
+      </defs>
+      <g
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+      >
+        <g id="Desktop-HD" fill="url(#linearGradient-1)">
+          <path
+            d="M445.155869,137.546837 C426.044109,167.564488 312.194559,292.895483 174.209852,121.681029 C174.209852,121.681029 143.760535,61.7853826 47.5796297,85.9797874 C-48.601276,110.174192 -230.742782,67.2489083 -139.746844,-65.2178228 C-48.7509054,-197.684554 242.443899,-97.5076656 361.146226,-54.9461668 C479.848553,-12.3846681 464.267629,107.529186 445.155869,137.546837 Z"
+            id="Path-7"
+            transform="translate(146.914299, 39.261254) rotate(-50.000000) translate(-146.914299, -39.261254) "
+          />
+        </g>
+      </g>
+    </svg>
+  );
+}

@@ -34,18 +34,11 @@ class Register extends React.Component {
       if (resume.size == 0) throw "Resume required.";
 
       this.setState({ loading: true });
-      const response = await registerService.register(fields);
+      await registerService.register(fields);
 
-      if (!response.success) throw response.message;
-
-      if (response.success) {
-        this.props.history.push({
-          pathname: "/response",
-          state: { detail: response }
-        });
-      }
+      this.props.history.push({ pathname: "/response" });
     } catch (e) {
-      this.setState({ loading: false });
+      this.setState({ loading: false, resume: "Upload resume" });
       alert(e);
     }
   };

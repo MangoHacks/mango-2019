@@ -5,7 +5,7 @@ import { Spring, animated } from "react-spring";
 import { interpolate } from "flubber";
 import { useMedia } from "the-platform";
 
-import { Facebook, Twitter, Instagram } from "./Icons";
+import { Facebook, Twitter, Instagram, Slack } from "./Icons";
 import Mango from "./shared/Mango";
 
 const SCREEN_SIZES = {
@@ -76,7 +76,10 @@ const HeroImage = styled.div`
 
 const bgs = [
   require("../assets/mangohacks-people-1.jpg"),
-  require("../assets/mangohacks-people-2.jpg")
+  require("../assets/mangohacks-people-2.jpg"),
+  require("../assets/mangohacks-people-3.jpg"),
+  require("../assets/mangohacks-people-4.jpg"),
+  require("../assets/mangohacks-people-5.jpg")
 ];
 const bg = randFrom(bgs);
 
@@ -135,7 +138,6 @@ const HeroContent = styled.div`
     font-size: 1.4em;
     text-align: center;
     font-weight: 600;
-    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8);
     margin-bottom: 20px;
   }
 `;
@@ -284,9 +286,9 @@ function Hero() {
         <HeroBg />
         {isSmall ? (
           <React.Fragment>
-            <BlobWrap top={getTop(-1 / 24)} left={getLeft(-9 / 18)}>
+            {/* <BlobWrap top={getTop(-1 / 24)} left={getLeft(-9 / 18)}>
               <Blob kind={2} width={500} height={300} />
-            </BlobWrap>
+            </BlobWrap> */}
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -335,7 +337,7 @@ function Hero() {
           >
             {animatedStyles => (
               <div style={animatedStyles}>
-                <RegisterButton href="/register">Register</RegisterButton>
+                <RegisterButton href="/hacker">Register</RegisterButton>
               </div>
             )}
           </Spring>
@@ -343,9 +345,9 @@ function Hero() {
       </HeroContainer>
       {isSmall ? (
         <React.Fragment>
-          <BlobWrap deg={30} top={getTop(7 / 10)} left={getLeft(6.2 / 10)}>
+          {/* <BlobWrap deg={30} top={getTop(7 / 10)} left={getLeft(6.2 / 10)}>
             <Blob kind={1} width={500} height={400} delay={600} />
-          </BlobWrap>
+          </BlobWrap> */}
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -368,7 +370,7 @@ function About() {
         <div
           className="about-bg-img"
           style={{
-            backgroundImage: `url("${require("../assets/aboutbg.jpg")}"`
+            backgroundImage: `url("${require("../assets/about_bg_2.jpg")}"`
           }}
         />
         <div className="about-bg-grad" />
@@ -598,6 +600,26 @@ function Faqs() {
       )
     },
     {
+      question: "Can i ...?",
+      answer: (
+        <React.Fragment>
+          <p>
+            <b>Mentor: </b> We love our mentors! <a href="/mentor">Signup</a> to
+            mentor at MangoHacks!🚀
+          </p>
+          <p>
+            <b>Teach a workshop: </b> <a href="/workshop">Teach with us</a> and
+            show others your unique skills at MangoHacks 🙅🏻‍♂️!
+          </p>
+          <p>
+            <b>Volunteer: </b>
+            <a href="/volunteer">Join us</a> and be part of Florida's Sweetest
+            organizing team! 🎉🥭
+          </p>
+        </React.Fragment>
+      )
+    },
+    {
       question: "Wait! What about...?",
       answer: (
         <React.Fragment>
@@ -614,12 +636,12 @@ function Faqs() {
     <div className="faqs">
       {isSmall ? (
         <React.Fragment>
-          <BlobWrap top={getTop(-1 / 12)} left={getLeft(-2.5 / 9)}>
+          {/* <BlobWrap top={getTop(-1 / 12)} left={getLeft(-2.5 / 9)}>
             <Blob width={300} height={400} kind={2} />
           </BlobWrap>
           <BlobWrap deg={40} top={getTop(2.9 / 5)} left={getLeft(4 / 5)}>
             <Blob width={350} height={300} kind={1} />
-          </BlobWrap>
+          </BlobWrap> */}
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -765,7 +787,7 @@ function Sponsors() {
 
   const tier12 = [
     {
-      name: "Ultiamte Software",
+      name: "Ultimate Software",
       link: "https://www.ultimatesoftware.com/",
       logo: require("../assets/sponsors/ultimate.png")
     },
@@ -856,6 +878,9 @@ function Landing() {
                   </a>
                   <a target="_blank" href="https://instagram.com/fiumangohacks">
                     <Instagram fill="#ffffff" />
+                  </a>
+                  <a target="_blank" href="https://mangohacks.slack.com/">
+                    <Slack fill="#ffffff" />
                   </a>
                 </div>
                 <div>© mangohacks.com</div>

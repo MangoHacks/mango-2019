@@ -183,6 +183,10 @@ h2 {
   font-size: 1.25em;
 }
 
+.answer a {
+  color: #fd5757;
+}
+
 @media (min-width: 490px) {
   .schedule .day {
     -webkit-box-flex: 1;
@@ -400,11 +404,6 @@ h2 {
 .response {
   height: 100%;
   background-color: #f6f8fa;
-  /* background: url("../assets/tri.jpg"),
-    linear-gradient(0deg, #ff5367f7 0%, #fa5e3ea6 100%);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 
 .response .card {
@@ -449,8 +448,7 @@ h2 {
   margin-top: 15px;
 }
 
-.response .social-media img {
-  height: 20px;
+.response .social-media a {
   padding: 0 5px;
 }
 /* ---------------------------- */
@@ -472,6 +470,22 @@ h2 {
     width: 450px;
     padding: 50px;
   }
+
+  .reg-blob-bottom {
+    position: fixed;
+    left: 0;
+    z-index: -1;
+    bottom: 0;
+    height: 170px;
+  }
+
+  .reg-blob {
+    position: fixed;
+    right: auto;
+    z-index: -1;
+    top: 0;
+    height: 320px;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -479,6 +493,19 @@ h2 {
     width: 490px !important;
     padding: 4rem;
     padding: 2rem 1.8rem;
+  }
+
+  .intro {
+    font-size: 1.3em;
+  }
+
+  .answer p,
+  .answer a {
+    font-size: 0.8em;
+  }
+
+  .info {
+    font-size: 1.3em !important;
   }
 }
 
@@ -511,5 +538,11 @@ h2 {
 
   .response .card {
     width: 290px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .response .card {
+    padding: 30px;
   }
 }

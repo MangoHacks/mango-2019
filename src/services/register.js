@@ -4,7 +4,7 @@ import config from "./config";
 
 const ri = axios.create({ baseURL: config.REGISTER_URL });
 
-const register = fields =>
+const hacker = fields =>
   new Promise(async (resolve, reject) => {
     let formData = new FormData();
 
@@ -18,4 +18,35 @@ const register = fields =>
     }
   });
 
-export default { register };
+const mentor = fields =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await ri.post("/mentor", fields);
+      resolve(data);
+    } catch (e) {
+      reject(e.response.data.error);
+    }
+  });
+
+const volunteer = fields =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await ri.post("/volunteer", fields);
+      resolve(data);
+    } catch (e) {
+      console.log(e);
+      reject(e.response.data.error);
+    }
+  });
+
+const workshop = fields =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await ri.post("/workshop", fields);
+      resolve(data);
+    } catch (e) {
+      reject(e.response.data.error);
+    }
+  });
+
+export default { hacker, mentor, volunteer, workshop };

@@ -1,11 +1,17 @@
 import React from "react";
 
-import Mango from "./shared/Mango";
+import Mango from "../shared/Mango";
 
-import { ResBlobTop, ResBlobBottom } from "./Icons";
+import {
+  ResBlobTop,
+  ResBlobBottom,
+  Facebook,
+  Twitter,
+  Instagram,
+  Slack
+} from "../Icons";
 
-const RegistrationResponse = props => {
-
+const HackerResponse = props => {
   return (
     <div className="response">
       <Mango className="response-mango" color="white" />
@@ -25,6 +31,16 @@ const RegistrationResponse = props => {
           meantime, follow us on our <b>social media</b> platforms for future
           announcements.
         </p>
+        <p>
+          <b>
+            Join our{" "}
+            <a href="https://mangohacks.slack.com/">
+              {" "}
+              <u>slack</u>
+            </a>{" "}
+            to stay up to date with all things mangohacks.
+          </b>
+        </p>
 
         <a href="https://mangohacks.com">
           <b>mangohacks.com</b>
@@ -32,14 +48,17 @@ const RegistrationResponse = props => {
         <hr />
 
         <div className="social-media">
-          <a href="https://www.facebook.com/mangohacks">
-            <img src="https://i.imgur.com/CZOS2up.png" />
+          <a target="_blank" href="https://www.facebook.com/MangoHacks">
+            <Facebook fill="#000" />
           </a>
-          <a href="https://www.twitter.com/fiumangohacks">
-            <img src="https://i.imgur.com/4G7Yajp.png" />
+          <a target="_blank" href="https://twitter.com/fiumangohacks">
+            <Twitter fill="#000" />
           </a>
-          <a href="https://www.instagram.com/fiumangohacks">
-            <img src="https://i.imgur.com/3SvBpxh.png" />
+          <a target="_blank" href="https://instagram.com/fiumangohacks">
+            <Instagram fill="#000" />
+          </a>
+          <a target="_blank" href="https://mangohacks.slack.com/">
+            <Slack fill="#000" />
           </a>
         </div>
       </div>
@@ -47,4 +66,4 @@ const RegistrationResponse = props => {
   );
 };
 
-export default RegistrationResponse;
+export default HackerResponse;

@@ -1,15 +1,15 @@
 import React from "react";
 import { BeatLoader } from "react-spinners";
 
-import Mango from "./shared/Mango";
-import { RegBlob, RegBlobBottom } from "./Icons";
+import Mango from "../shared/Mango";
+import { RegBlobTop, RegBlobBottom } from "../Icons";
 
-import registerService from "../services/register";
+import registerService from "../../services/register";
 
-import schools from "../assets/schools.json";
-import majors from "../assets/majors.json";
+import schools from "../../assets/data/schools.json";
+import majors from "../../assets/data/majors.json";
 
-class Register extends React.Component {
+class Hacker extends React.Component {
   state = { resume: "Upload resume", loading: false };
 
   validateResume = file => file.type === "application/pdf";
@@ -34,9 +34,9 @@ class Register extends React.Component {
       if (resume.size == 0) throw "Resume required.";
 
       this.setState({ loading: true });
-      await registerService.register(fields);
+      await registerService.hacker(fields);
 
-      this.props.history.push({ pathname: "/response" });
+      this.props.history.push({ pathname: "/hackerresponse" });
     } catch (e) {
       this.setState({ loading: false, resume: "Upload resume" });
       alert(e);
@@ -50,7 +50,7 @@ class Register extends React.Component {
 
     return (
       <React.Fragment>
-        <RegBlob className="reg-blob" />
+        <RegBlobTop className="reg-blob" />
         <RegBlobBottom className="reg-blob-bottom" />
         <Mango className="register-mango" color="white" />
         <div className="registration-card">
@@ -310,4 +310,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default Hacker;

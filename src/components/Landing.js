@@ -1,10 +1,9 @@
-import React, { Component, useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Expand from "./Expand";
 import { Spring, animated } from "react-spring";
 import { interpolate } from "flubber";
 import { useMedia } from "the-platform";
-
 
 import { Facebook, Twitter, Instagram } from "./Icons";
 import Mango from "./shared/Mango";
@@ -44,7 +43,6 @@ function FilterDefs() {
   );
 }
 
-
 const HeroImage = styled.div`
   height: 100%;
   width: 100%;
@@ -76,13 +74,13 @@ const HeroImage = styled.div`
   }
 `;
 
-function HeroBg() {
-  const bgs = [
-    require("../assets/mangohacks-people-1.jpg"),
-    require("../assets/mangohacks-people-2.jpg")
-  ];
-  const bg = randFrom(bgs);
+const bgs = [
+  require("../assets/mangohacks-people-1.jpg"),
+  require("../assets/mangohacks-people-2.jpg")
+];
+const bg = randFrom(bgs);
 
+function HeroBg() {
   return (
     <HeroImage bg={bg}>
       <div className="herobg-image" />
@@ -303,15 +301,44 @@ function Hero() {
 
         <HeroContent>
           <div className="mangowrap">
-            <Mango style={{ width: "100%", height: "130px" }} />
+            <Spring
+              from={{ opacity: 0, transform: "scale(0.4)" }}
+              to={{ opacity: 1, transform: "scale(1)" }}
+              delay={300}
+            >
+              {animatedStyles => (
+                <div style={animatedStyles}>
+                  <Mango style={{ width: "100%", height: "130px" }} />
+                </div>
+              )}
+            </Spring>
           </div>
-          <div className="tagline">It just got sweeter</div>
-          <h1 className="title">MangoHacks</h1>
-          <div className="info">
-            Feb 1st - 3rd | Florida International University
-          </div>
-
-          <RegisterButton href="/register">Register</RegisterButton>
+          <Spring
+            from={{ opacity: 0, transform: "translateY(10px)" }}
+            to={{ opacity: 1, transform: "translateY(0)" }}
+            delay={700}
+          >
+            {animatedStyles => (
+              <div style={{ ...animatedStyles, textAlign: "center" }}>
+                <div className="tagline">It just got sweeter</div>
+                <h1 className="title">MangoHacks</h1>
+                <div className="info" style={animatedStyles}>
+                  Feb 1st - 3rd | Florida International University
+                </div>
+              </div>
+            )}
+          </Spring>
+          <Spring
+            from={{ opacity: 0, transform: "translateY(10px)" }}
+            to={{ opacity: 1, transform: "translateY(0)" }}
+            delay={1300}
+          >
+            {animatedStyles => (
+              <div style={animatedStyles}>
+                <RegisterButton href="/register">Register</RegisterButton>
+              </div>
+            )}
+          </Spring>
         </HeroContent>
       </HeroContainer>
       {isSmall ? (
@@ -590,11 +617,7 @@ function Faqs() {
           <BlobWrap top={getTop(-1 / 12)} left={getLeft(-2.5 / 9)}>
             <Blob width={300} height={400} kind={2} />
           </BlobWrap>
-          <BlobWrap
-            deg={40}
-            top={getTop(2.9 / 5)}
-            left={getLeft(4 / 5)}
-          >
+          <BlobWrap deg={40} top={getTop(2.9 / 5)} left={getLeft(4 / 5)}>
             <Blob width={350} height={300} kind={1} />
           </BlobWrap>
         </React.Fragment>
@@ -603,11 +626,7 @@ function Faqs() {
           <BlobWrap top={getTop(-1 / 12)} left={getLeft(-1 / 9)}>
             <Blob width={400} height={500} kind={2} />
           </BlobWrap>
-          <BlobWrap
-            deg={90}
-            top={getTop(1.5 / 5)}
-            left={getLeft(4.2 / 5)}
-          >
+          <BlobWrap deg={90} top={getTop(1.5 / 5)} left={getLeft(4.2 / 5)}>
             <Blob width={450} height={370} kind={0} />
           </BlobWrap>
         </React.Fragment>
@@ -789,55 +808,64 @@ function Sponsors() {
   );
 }
 
-class Landing extends Component {
-  render() {
-    return (
-      <AppContainer>
-        <a
-          className="mlh-badge"
-          href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=white"
-          target="_blank"
-        >
-          <img
-            src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg"
-            alt="Major League Hacking 2019 Hackathon Season"
-          />
-        </a>
-        <Hero />
-        <div className="container intro">
-          <h2>A place for discovery</h2>
-          <p>
-            Mangohacks is a 36 hour hackathon that encourages learning,
-            collaboration, growth, innovation, and fun. We will welcome 500+
-            students from Florida and across the country, amazing mentors, and
-            wonderful sponsors to create amazing things. MangoHacks is organized
-            by students for students, with the strong belief that anyone can
-            hack.
-          </p>
-        </div>
-        <About />
-        <Faqs />
-        <Schedule />
-        <Sponsors />
-        <div className="footer">
-          <div className="container">
-            <div className="social-media">
-              <a target="_blank" href="https://www.facebook.com/MangoHacks">
-                <Facebook fill="#ffffff" />
-              </a>
-              <a target="_blank" href="https://twitter.com/fiumangohacks">
-                <Twitter fill="#ffffff" />
-              </a>
-              <a target="_blank" href="https://instagram.com/fiumangohacks">
-                <Instagram fill="#ffffff" />
-              </a>
+function Landing() {
+  return (
+    <AppContainer>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+        {props => (
+          <div style={props}>
+            <a
+              className="mlh-badge"
+              href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=white"
+              target="_blank"
+            >
+              <img
+                src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg"
+                alt="Major League Hacking 2019 Hackathon Season"
+              />
+            </a>
+
+            <Hero />
+            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={1500}>
+              {animatedStyles => (
+                <div className="container intro" style={animatedStyles}>
+                  <h2>A place for discovery</h2>
+                  <p>
+                    Mangohacks is a 36 hour hackathon that encourages learning,
+                    collaboration, growth, innovation, and fun. We will welcome
+                    500+ students from Florida and across the country, amazing
+                    mentors, and wonderful sponsors to create amazing things.
+                    MangoHacks is organized by students for students, with the
+                    strong belief that anyone can hack.
+                  </p>
+                </div>
+              )}
+            </Spring>
+            <About />
+            <Faqs />
+            <Schedule />
+            <Sponsors />
+            <div className="footer">
+              <div className="container">
+                <div className="social-media">
+                  <a target="_blank" href="https://www.facebook.com/MangoHacks">
+                    <Facebook fill="#ffffff" />
+                  </a>
+                  <a target="_blank" href="https://twitter.com/fiumangohacks">
+                    <Twitter fill="#ffffff" />
+                  </a>
+                  <a target="_blank" href="https://instagram.com/fiumangohacks">
+                    <Instagram fill="#ffffff" />
+                  </a>
+                </div>
+                <div>© mangohacks.com</div>
+              </div>
             </div>
-            <div>© mangohacks.com</div>
           </div>
-        </div>
-      </AppContainer>
-    );
-  }
+        )}
+      </Spring>
+    </AppContainer>
+  );
 }
 
 export default Landing;

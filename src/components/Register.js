@@ -34,18 +34,11 @@ class Register extends React.Component {
       if (resume.size == 0) throw "Resume required.";
 
       this.setState({ loading: true });
-      const response = await registerService.register(fields);
+      await registerService.register(fields);
 
-      if (!response.success) throw response.message;
-
-      if (response.success) {
-        this.props.history.push({
-          pathname: "/response",
-          state: { detail: response }
-        });
-      }
+      this.props.history.push({ pathname: "/response" });
     } catch (e) {
-      this.setState({ loading: false });
+      this.setState({ loading: false, resume: "Upload resume" });
       alert(e);
     }
   };
@@ -75,7 +68,12 @@ class Register extends React.Component {
               <form onSubmit={this.submit}>
                 {/* FirstName */}
                 <div className="form-group">
-                  <label htmlFor="firstName">First Name</label>
+                  <label htmlFor="firstName">
+                    First Name&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <input
                     required
                     name="firstName"
@@ -89,7 +87,12 @@ class Register extends React.Component {
 
                 {/* LastName */}
                 <div className="form-group">
-                  <label htmlFor="firstName">Last Name</label>
+                  <label htmlFor="firstName">
+                    Last Name&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <input
                     required
                     name="lastName"
@@ -103,7 +106,12 @@ class Register extends React.Component {
 
                 {/* Email */}
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">
+                    Email&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <input
                     required
                     name="email"
@@ -117,7 +125,12 @@ class Register extends React.Component {
 
                 {/* School */}
                 <div className="form-group">
-                  <label htmlFor="school">School</label>
+                  <label htmlFor="school">
+                    School&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <input
                     required
                     type="text"
@@ -136,7 +149,12 @@ class Register extends React.Component {
 
                 {/* Major */}
                 <div className="form-group">
-                  <label htmlFor="major">Major</label>
+                  <label htmlFor="major">
+                    Major&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <input
                     required
                     type="text"
@@ -155,7 +173,12 @@ class Register extends React.Component {
 
                 {/* LevelOfStudy */}
                 <div className="form-group">
-                  <label htmlFor="levelOfStudy">Level of study</label>
+                  <label htmlFor="levelOfStudy">
+                    Level of study&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <select required className="form-control" name="levelOfStudy">
                     <option key="FRESHMAN" value="FRESHMAN">
                       Freshman
@@ -177,7 +200,12 @@ class Register extends React.Component {
 
                 {/* resume*/}
                 <div className="form-group">
-                  <label htmlFor="resume">Resume</label>
+                  <label htmlFor="resume">
+                    Resume&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <br />
                   <label className="btn" style={{ backgroundColor: "#F6F8FA" }}>
                     <i className="fa fa-file-text" />
@@ -195,7 +223,12 @@ class Register extends React.Component {
 
                 {/* Gender */}
                 <div className="form-group">
-                  <label htmlFor="gender">Gender</label>
+                  <label htmlFor="gender">
+                    Gender&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <select required className="form-control" name="gender">
                     <option key="MALE" value="MALE">
                       Male
@@ -214,7 +247,12 @@ class Register extends React.Component {
 
                 {/* Shirt Size */}
                 <div className="form-group">
-                  <label htmlFor="shirtSize">Shirt Size</label>
+                  <label htmlFor="shirtSize">
+                    Shirt Size&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
                   <select required className="form-control" name="shirtSize">
                     <option key="SMALL" value="SMALL">
                       Small
@@ -255,7 +293,7 @@ class Register extends React.Component {
                     target="_blank"
                     className="mlh-link"
                   >
-                    Code of Conduct.
+                    <u>Code of Conduct.</u>
                   </a>
                 </div>
 

@@ -1,14 +1,17 @@
 import React from "react";
 
-const RegistrationResponse = props => {
-  const { history } = props;
-//   const applicant = props.location.statea.applicant;
+import Mango from "./shared/Mango";
 
-  //   if (!res.applicant || res.applicant == null || res.applicant === "undefined")
-  //     history.push("/");
+import { ResBlobTop, ResBlobBottom } from "./Icons";
+
+const RegistrationResponse = props => {
 
   return (
     <div className="response">
+      <Mango className="response-mango" color="white" />
+      <ResBlobTop className="res-blob-top" />
+      <ResBlobBottom className="res-blob-bottom" />
+
       <div className="card">
         <h1>You've applied to Florida's sweetest hackathon! 🎉</h1>
         <hr />

@@ -3,19 +3,15 @@ import styled from "styled-components";
 import Expand from "./Expand";
 import { Spring, animated } from "react-spring";
 import { interpolate } from "flubber";
+import { useMedia } from "the-platform";
+
 
 import { Facebook, Twitter, Instagram } from "./Icons";
+import Mango from "./shared/Mango";
 
-function shuffle(a) {
-  var j, x, i;
-  for (i = a.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    x = a[i];
-    a[i] = a[j];
-    a[j] = x;
-  }
-  return a;
-}
+const SCREEN_SIZES = {
+  small: 769
+};
 
 function randFrom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -24,7 +20,6 @@ function randFrom(arr) {
 function randBetween(from, to) {
   return from + Math.floor(Math.random() * to);
 }
-
 
 function FilterDefs() {
   return (
@@ -49,25 +44,6 @@ function FilterDefs() {
   );
 }
 
-function Mango(props) {
-  let { fill = "#000", ...rest } = props;
-
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="368"
-      height="286"
-      viewBox="0 0 368 286"
-      {...rest}
-    >
-      <path
-        fill={fill}
-        fillRule="evenodd"
-        d="M314.4 169.4a110.7 110.7 0 0 0-.4 1l-.5 1.1a139 139 0 0 1-14 24.4l-.1-1.3-.3.3v.6a28.6 28.6 0 0 0 .7 4.2 44.7 44.7 0 0 0 6.8 17 68.9 68.9 0 0 0 20.1 18.7c2.8-13.5 6.4-27.4 10-40.9 7.3-27.9 14.2-54.3 12.4-71.9-2.1-21.5-11.5-40.4-25-50.3-5.2-4-10.9-6.3-16.3-6.7 8.8 15.7 14 32 15.5 48.7a127.3 127.3 0 0 0-17-48.7h-.4a130.3 130.3 0 0 1 16.7 49.3 116.3 116.3 0 0 1-8.2 54.5zm8.9-55.1c.8 9.3.4 18.7-1.1 28-1.5 9.2-4.1 18.1-7.7 26.8a101.7 101.7 0 0 0 8.8-54.8zm0 0c.8 9.3.4 18.7-1.1 28-1.5 9.2-4.1 18.1-7.7 26.8a101.7 101.7 0 0 0 8.8-54.8zm0 0c.8 9.3.4 18.7-1.1 28-1.5 9.2-4.1 18.1-7.7 26.8a101.7 101.7 0 0 0 8.8-54.8zm0 0a102.4 102.4 0 0 1-8.8 54.8 120.4 120.4 0 0 0 8.8-54.8zM242.8 226c33-24.7 53.2-54.4 58.2-86 .8-5 1.2-10.1 1.2-15.2 0-23.1-8.3-46-24.5-66.8a101.8 101.8 0 0 0-53.3-33.9 110 110 0 0 0-28.7-3.9 97.2 97.2 0 0 0-38.3 7.7c-36.8 15.8-49.1 37.7-66.2 68a332.1 332.1 0 0 1-60.5 82.6 34.2 34.2 0 0 0-9.3 29.8c1 7.2 3.7 12.7 6 15.4 17.4 21.5 50.3 37.2 85.7 41 31.1 3.3 78.9-.8 129.7-38.7zM296 28.4c-3.1 2.7-6.7 5.5-10 7.8a99 99 0 0 1 6.3 7l8-8.6c-1.5-2.6-3-4.6-4.3-6.2zm71.2 92.4c2.1 20.8-5.2 48.7-12.9 78.2-4.6 17.4-9.3 35.5-12 52l-2 12.5-11.3-6a101 101 0 0 1-37.6-31 62.6 62.6 0 0 1-6-11.4 206.5 206.5 0 0 1-30 27.2A208 208 0 0 1 130.3 286c-52 0-96.5-21.6-119.3-49.5A53 53 0 0 1 .8 211.2c-2.5-18 3-35 15.2-47 29.3-28.8 44-55 57-78 17.6-31.3 32.8-58.4 76-77a129 129 0 0 1 125 16.6c6.2-4.3 13-9.5 15.5-12.7a7.9 7.9 0 0 1 10.6-2c1 .7 10.2 7 16.7 21.8 1.1 2.7.6 6-1.4 8.2L309 48c9 .6 17.9 4 26.1 10.1 17.7 13 29.4 36 32.1 62.7zm-103 55.6c-15 26.5-43.1 47.7-81 61.3a245 245 0 0 1-53.8 12.7c-5.3 0-9.8-4-10.3-9.1a10.2 10.2 0 0 1 9.2-11.2c.3 0 22.4-2.4 48.1-11.7 23-8.3 53.8-24 69.8-51.9 2.8-4.9 9.1-6.6 14-3.9 5.1 2.7 6.9 9 4 13.8zm13.3-34.4a7.4 7.4 0 1 1-14.9 0 7.4 7.4 0 0 1 14.9 0z"
-      />
-    </svg>
-  );
-}
 
 const HeroImage = styled.div`
   height: 100%;
@@ -221,7 +197,7 @@ function getLeft(frac) {
 const blobPaths = [
   [
     "M52.3 48.2c-96.4 79.3-70 268.3 167.6 292.3 237.5 24 249.6-50.5 349.5 86.6 100 137.1 257.7 156.4 309 97.5 51.2-59 170.7-259 115.3-362.9C956.7 92.6 828.5 45.4 609 20.2c-307-34.3-492.5-25-556.7 28z",
-    "M62.5 53c-96.4 79.3-70.7 236.5 157.4 287.5 228.1 51 249.6-50.5 349.5 86.6 100 137.1 257.7 156.4 309 97.5 51.2-59 170.7-259 115.3-362.9C956.7 92.6 828.5 45.4 609 20.2 308.9-10.8 126.7.2 62.5 53z",
+    "M62.5 53c-96.4 79.3-58.5 251 163 312.5s257.1-7.5 374 81c116.9 88.5 243.3 124 294.5 65 51.2-59 137.4-247.2 82-351-37-69.2-159.3-116-367-140.3C308.9-10.8 126.7.2 62.5 53z",
     "M56 56c-95.7 79.2-73.7 260.5 163.9 284.5 237.5 24 252.6-56.5 352.5 80.6 100 137.1 257.7 156.4 309 97.5C932.6 459.6 1055 285 983 170 935 93.3 814 41.7 620 15 307.8-10.4 119.8 3.2 56 56z"
   ],
   [
@@ -264,7 +240,7 @@ function makeInterpolators(paths, segments = 40) {
 }
 
 function Blob(props) {
-  const { width, height, kind = 0 } = props;
+  const { width, height, kind = 0, delay = 0 } = props;
   const [index, setIndex] = useState(randBetween(0, 2));
   const { viewBox, interpolators } = blobParams[kind];
 
@@ -285,7 +261,7 @@ function Blob(props) {
         <g fill="url(#blobgrad)" fillRule="evenodd">
           <Spring
             reset
-            config={{ tension: 280, friction: 240 }}
+            config={{ tension: 280, friction: 240, delay }}
             native
             from={{ t: 0 }}
             to={{ t: 1 }}
@@ -300,18 +276,30 @@ function Blob(props) {
 }
 
 function Hero() {
+  const isSmall = useMedia({ maxWidth: SCREEN_SIZES.small });
+
   return (
     <React.Fragment>
       <HeroContainer>
         <FilterDefs />
 
         <HeroBg />
-        <BlobWrap top={getTop(3 / 24)} left={getLeft(-1 / 18)}>
-          <Blob kind={2} width={500} height={300} />
-        </BlobWrap>
-        <BlobWrap top={getTop(-1 / 30)} left={getLeft(7 / 10)}>
-          <Blob width={700} height={400} />
-        </BlobWrap>
+        {isSmall ? (
+          <React.Fragment>
+            <BlobWrap top={getTop(-1 / 24)} left={getLeft(-9 / 18)}>
+              <Blob kind={2} width={500} height={300} />
+            </BlobWrap>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <BlobWrap top={getTop(3 / 24)} left={getLeft(-1 / 18)}>
+              <Blob kind={2} width={500} height={300} />
+            </BlobWrap>
+            <BlobWrap top={getTop(-1 / 30)} left={getLeft(7 / 10)}>
+              <Blob width={700} height={400} delay={400} />
+            </BlobWrap>
+          </React.Fragment>
+        )}
 
         <HeroContent>
           <div className="mangowrap">
@@ -326,17 +314,27 @@ function Hero() {
           <RegisterButton href="/register">Register</RegisterButton>
         </HeroContent>
       </HeroContainer>
-      <BlobWrap top={getTop(3.1 / 5)} left={getLeft(4 / 24)}>
-        <Blob kind={1} width={600} height={400} />
-      </BlobWrap>
-      <BlobWrap deg={30} top={getTop(7 / 10)} left={getLeft(8.5 / 10)}>
-        <Blob kind={1} width={500} height={400} />
-      </BlobWrap>
+      {isSmall ? (
+        <React.Fragment>
+          <BlobWrap deg={30} top={getTop(7 / 10)} left={getLeft(6.2 / 10)}>
+            <Blob kind={1} width={500} height={400} delay={600} />
+          </BlobWrap>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <BlobWrap top={getTop(3.1 / 5)} left={getLeft(4 / 24)}>
+            <Blob kind={1} width={600} height={400} delay={800} />
+          </BlobWrap>
+          <BlobWrap deg={30} top={getTop(7 / 10)} left={getLeft(8.5 / 10)}>
+            <Blob kind={1} width={500} height={400} delay={600} />
+          </BlobWrap>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }
 
-function About(pros) {
+function About() {
   return (
     <div className="about">
       <div className="about-bg">
@@ -465,7 +463,8 @@ function Faq(props) {
   );
 }
 
-function Faqs(props) {
+function Faqs() {
+  const isSmall = useMedia({ maxWidth: SCREEN_SIZES.small });
   const faqs = [
     {
       question: "When and where?",
@@ -586,16 +585,34 @@ function Faqs(props) {
 
   return (
     <div className="faqs">
-      <BlobWrap top={getTop(-1 / 12)} left={getLeft(-1 / 9)}>
-        <Blob width={400} height={500} kind={2} />
-      </BlobWrap>
-      <BlobWrap
-        deg={Math.random() * 360}
-        top={getTop(1.9 / 5)}
-        left={getLeft(4 / 5)}
-      >
-        <Blob width={350} height={300} kind={1} />
-      </BlobWrap>
+      {isSmall ? (
+        <React.Fragment>
+          <BlobWrap top={getTop(-1 / 12)} left={getLeft(-2.5 / 9)}>
+            <Blob width={300} height={400} kind={2} />
+          </BlobWrap>
+          <BlobWrap
+            deg={40}
+            top={getTop(2.9 / 5)}
+            left={getLeft(4 / 5)}
+          >
+            <Blob width={350} height={300} kind={1} />
+          </BlobWrap>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <BlobWrap top={getTop(-1 / 12)} left={getLeft(-1 / 9)}>
+            <Blob width={400} height={500} kind={2} />
+          </BlobWrap>
+          <BlobWrap
+            deg={90}
+            top={getTop(1.5 / 5)}
+            left={getLeft(4.2 / 5)}
+          >
+            <Blob width={450} height={370} kind={0} />
+          </BlobWrap>
+        </React.Fragment>
+      )}
+
       <div className="container">
         <h2>FAQs</h2>
 
@@ -607,7 +624,7 @@ function Faqs(props) {
   );
 }
 
-function Schedule(props) {
+function Schedule() {
   return (
     <section className="schedule">
       <div className="container">
@@ -703,7 +720,7 @@ function Schedule(props) {
   );
 }
 
-function Sponsors(props) {
+function Sponsors() {
   const tier3 = [
     {
       name: "ExpressScripts",
@@ -795,7 +812,7 @@ class Landing extends Component {
             students from Florida and across the country, amazing mentors, and
             wonderful sponsors to create amazing things. MangoHacks is organized
             by students for students, with the strong belief that anyone can
-            hack
+            hack.
           </p>
         </div>
         <About />

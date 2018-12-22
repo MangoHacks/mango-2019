@@ -1,6 +1,8 @@
 import React, { Component, useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Expand from "./Expand";
+import { Spring, animated } from "react-spring";
+import { interpolate } from "flubber";
 
 import { Facebook, Twitter, Instagram } from "./Icons";
 
@@ -19,118 +21,10 @@ function randFrom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function randBetween(to, from) {
+function randBetween(from, to) {
   return from + Math.floor(Math.random() * to);
 }
 
-function Blob(props) {
-  const {
-    width,
-    height,
-    particles = 3,
-    radius = width / 4,
-    dimsVar = width / 20,
-    radVar = radius / 20,
-    mirrorVariance = randFrom([true, false]),
-    ...rest
-  } = props;
-  const initialWidth = width / 2;
-  const initialHeight = height / 2;
-  const initialRadius = radius;
-  const durationMin = 20;
-  const durationMax = 25;
-
-  const animDuration = durationMin + Math.floor(Math.random() * durationMax);
-  const animDurVar = (animDuration / particles) * 2;
-  const animDelayVar = 0.1 + Math.random() * 0.5;
-
-  let balls = [];
-  for (let i = 0; i < particles; i++) {
-    balls.push({
-      x: initialWidth + dimsVar * i,
-      y: initialHeight + dimsVar * i,
-      radius: initialRadius + radVar * i
-    });
-  }
-  balls = shuffle(balls);
-
-  let animationDirs = ["normal", "reverse"];
-
-  return (
-    <React.Fragment>
-      <div className="gooball" {...rest}>
-        <svg
-          width={`${width}px`}
-          height={`${height}px`}
-          overflow="visible"
-          viewBox={`0 0 ${width}px ${height}px`}
-        >
-          <g
-            style={{
-              filter: 'url("#goo")',
-              transformOrigin: `${width / 2}px ${height / 2}px`
-            }}
-          >
-            {balls.map((ball, index) => {
-              const origin = 5 * index + width / 2;
-              let animDir = randFrom(animationDirs);
-              let style = {
-                transformOrigin: `${origin}px ${origin}px`,
-                animationName: "blob-spin",
-                animationDuration: `${animDuration + index * animDurVar}s`,
-                animationDelay: `${index *
-                  randBetween(-20, -1) *
-                  animDelayVar}s`,
-                animationTimingFunction: "linear",
-                animationDirection: `${animDir}`
-              };
-
-              return (
-                <circle
-                  className="goo-particle"
-                  key={index}
-                  fill="url(#blobgrad)"
-                  cx={`${ball.x}px`}
-                  cy={`${ball.y}px`}
-                  r={`${ball.radius}px`}
-                  style={style}
-                />
-              );
-            })}
-            {/* TODO: Change this back to mirror variance */}
-            {false &&
-              balls.map((ball, index) => {
-                const origin = 5 * index + width / 2;
-                let animDir = randFrom(animationDirs);
-                let style = {
-                  transformOrigin: `${origin}px ${origin}px`,
-                  animationName: "blob-spin-1",
-                  animationDuration: `${animDuration + index * animDurVar}s`,
-                  animationDelay: `${index *
-                    randBetween(-20, -1) *
-                    animDelayVar}s`,
-                  animationTimingFunction: "linear",
-                  animationDirection: `${animDir}`
-                };
-
-                return (
-                  <circle
-                    className="goo-particle"
-                    key={index}
-                    fill="url(#blobgrad)"
-                    cx={`${ball.x}px`}
-                    cy={`${ball.y}px`}
-                    r={`${ball.radius}px`}
-                    style={style}
-                  />
-                );
-              })}
-          </g>
-        </svg>
-      </div>
-    </React.Fragment>
-  );
-}
 
 function FilterDefs() {
   return (
@@ -324,25 +218,99 @@ function getLeft(frac) {
   return `${window.innerWidth * frac}px`;
 }
 
+const blobPaths = [
+  [
+    "M52.3 48.2c-96.4 79.3-70 268.3 167.6 292.3 237.5 24 249.6-50.5 349.5 86.6 100 137.1 257.7 156.4 309 97.5 51.2-59 170.7-259 115.3-362.9C956.7 92.6 828.5 45.4 609 20.2c-307-34.3-492.5-25-556.7 28z",
+    "M62.5 53c-96.4 79.3-70.7 236.5 157.4 287.5 228.1 51 249.6-50.5 349.5 86.6 100 137.1 257.7 156.4 309 97.5 51.2-59 170.7-259 115.3-362.9C956.7 92.6 828.5 45.4 609 20.2 308.9-10.8 126.7.2 62.5 53z",
+    "M56 56c-95.7 79.2-73.7 260.5 163.9 284.5 237.5 24 252.6-56.5 352.5 80.6 100 137.1 257.7 156.4 309 97.5C932.6 459.6 1055 285 983 170 935 93.3 814 41.7 620 15 307.8-10.4 119.8 3.2 56 56z"
+  ],
+  [
+    "M607.5 412c-156.8 131.4-251.5 114.2-353 80.2C145.4 455.7 42.2 402 5 274.9-32.4 147.7 196-127.4 249 69.5 301.7 266.4 357.7 265.6 445 289c63.7 17 169.3 24.3 180.4 56.2 4.1 11.7 24.4 31.4-17.9 66.8z",
+    "M605.5 417C448.7 548.4 355.6 542.5 254 508.5c-109-36.4-225.5-68-251-228.6C-22.5 119.2 194-122.4 247 74.5c52.8 196.9 116.8 182 204 205.4 63.7 17 161.3 38.4 172.4 70.3 4.1 11.7 24.4 31.4-17.9 66.8z",
+    "M605.5 406c-135.5 145.4-272.4 133-374 99-109-36.4-203-75.5-228.5-236.1C-22.5 108.2 188-109 247 63.5 305.7 236 363.7 245.5 451 269c63.7 17 150.9 18.7 162 50.6 4.1 11.8 27 49.5-7.5 86.5z"
+  ],
+  [
+    "M95.2 2c69.6 6.8 305 63.3 306.7 188.9 1.6 125.5-74.2 190-209.1 169.6C57.8 340.1-12.6 203.7 2 109.7 16.8 15.7 25.5-4.7 95.1 2z",
+    "M114.9 4.6c62.7 0 289 74.3 272.7 203-16.2 128.8-91.2 170-225 141.3C29 320.2 6.3 145.5 13.8 96.2 21.2 46.8 52.1 4.7 115 4.6z",
+    "M101 6.4c71.6 0 299.9 73.2 299.8 182 0 108.6-91.2 183.2-228.3 172.9C35.3 351 4.3 175.6 4.3 117S29.5 6.5 101.1 6.4z"
+  ]
+];
+
+const blobParams = [
+  {
+    viewBox: "0 0 1073 620",
+    interpolators: makeInterpolators(blobPaths[0], 35)
+  },
+  {
+    viewBox: "0 0 632 535",
+    interpolators: makeInterpolators(blobPaths[1], 10)
+  },
+  {
+    viewBox: "0 0 402 365",
+    interpolators: makeInterpolators(blobPaths[2], 30)
+  }
+];
+
+function makeInterpolators(paths, segments = 40) {
+  const interpols = [];
+  for (let i = 0; i < paths.length; i++) {
+    interpols.push(
+      interpolate(paths[i], paths[i + 1] || paths[0], {
+        maxSegmentLength: segments
+      })
+    );
+  }
+  return interpols;
+}
+
+function Blob(props) {
+  const { width, height, kind = 0 } = props;
+  const [index, setIndex] = useState(randBetween(0, 2));
+  const { viewBox, interpolators } = blobParams[kind];
+
+  function goNext() {
+    setIndex(index + 1 >= interpolators.length ? 0 : index + 1);
+  }
+
+  const interpolator = interpolators[index];
+
+  return (
+    <div>
+      <svg
+        width={`${width}px`}
+        height={`${height}px`}
+        overflow="visible"
+        viewBox={viewBox}
+      >
+        <g fill="url(#blobgrad)" fillRule="evenodd">
+          <Spring
+            reset
+            config={{ tension: 280, friction: 240 }}
+            native
+            from={{ t: 0 }}
+            to={{ t: 1 }}
+            onRest={goNext}
+          >
+            {({ t }) => <animated.path d={t.interpolate(interpolator)} />}
+          </Spring>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <React.Fragment>
       <HeroContainer>
         <FilterDefs />
 
-        {/* <HeroBg /> */}
-        <BlobWrap top={getTop(1 / 24)} left={getLeft(-1 / 9)}>
-          {/* <Blob width={900} height={500} particles={2} radius={20} radVar={1} /> */}
+        <HeroBg />
+        <BlobWrap top={getTop(3 / 24)} left={getLeft(-1 / 18)}>
+          <Blob kind={2} width={500} height={300} />
         </BlobWrap>
-        <BlobWrap top={getTop(-2 / 7)} left={getLeft(6 / 10)}>
-          {/* <Blob width={800} height={600} radius={9} radVar={33} particles={2} /> */}
-          {/* <Blob
-            width={800}
-            height={600}
-            radius={25}
-            radVar={33}
-            particles={6}
-          /> */}
+        <BlobWrap top={getTop(-1 / 30)} left={getLeft(7 / 10)}>
+          <Blob width={700} height={400} />
         </BlobWrap>
 
         <HeroContent>
@@ -358,28 +326,11 @@ function Hero() {
           <RegisterButton href="/register">Register</RegisterButton>
         </HeroContent>
       </HeroContainer>
-      <BlobWrap
-        deg={Math.random() * 360}
-        top={getTop(3.1 / 5)}
-        left={getLeft(0.43 / 5)}
-      >
-        <Blob
-        // width={500}
-        // height={350}
-        // particles={4}
-        // radius={65}
-        // radVar={18}
-        // mirrorVariance={false}
-        />
+      <BlobWrap top={getTop(3.1 / 5)} left={getLeft(4 / 24)}>
+        <Blob kind={1} width={600} height={400} />
       </BlobWrap>
-      <BlobWrap
-        deg={Math.random() * 360}
-        top={getTop(3.9 / 5)}
-        left={getLeft(4 / 5)}
-      >
-        {/* <Blob width={900} height={500} particles={2} radius={50} radVar={10} /> */}
-
-        {/* <Blob width={500} height={350} particles={4} radius={70} radVar={18} /> */}
+      <BlobWrap deg={30} top={getTop(7 / 10)} left={getLeft(8.5 / 10)}>
+        <Blob kind={1} width={500} height={400} />
       </BlobWrap>
     </React.Fragment>
   );
@@ -441,7 +392,7 @@ const FaqContainer = styled.div`
     text-align: left;
     margin-bottom: 12px;
     position: relative;
-    translate(10px);
+    transform: translate(10px);
 
 
   }
@@ -636,14 +587,14 @@ function Faqs(props) {
   return (
     <div className="faqs">
       <BlobWrap top={getTop(-1 / 12)} left={getLeft(-1 / 9)}>
-        <Blob width={400} height={500} particles={5} radius={30} radVar={18} />
+        <Blob width={400} height={500} kind={2} />
       </BlobWrap>
       <BlobWrap
         deg={Math.random() * 360}
         top={getTop(1.9 / 5)}
         left={getLeft(4 / 5)}
       >
-        <Blob width={500} height={350} particles={4} radius={60} radVar={18} />
+        <Blob width={350} height={300} kind={1} />
       </BlobWrap>
       <div className="container">
         <h2>FAQs</h2>
@@ -793,7 +744,7 @@ function Sponsors(props) {
     <div className="sponsors">
       <div className="container">
         <h2>Sponsors</h2>
-        <h5 className="text-muted" style={{ "margin-bottom": "50px" }}>
+        <h5 className="text-muted" style={{ marginBottom: "50px" }}>
           MangoHacks is possible thanks to these amazing people.
         </h5>
         <div className="sponsors-container">

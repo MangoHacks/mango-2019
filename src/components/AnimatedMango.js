@@ -168,7 +168,7 @@ function MangoSplat() {
         reset
         from={{ dash: offset * 3 }}
         to={{ dash: offset }}
-        config={{ duration: 550 }}
+        config={{ duration: 350 }}
       >
         {props => (
           <animated.g>

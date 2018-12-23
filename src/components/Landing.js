@@ -5,7 +5,7 @@ import { Spring, animated } from "react-spring";
 import { interpolate } from "flubber";
 import { useMedia } from "the-platform";
 
-import { getStyle } from "../services/cookies";
+import gradients from "../assets/data/gradients";
 
 import h2rgb from "hex-rgb";
 
@@ -875,9 +875,7 @@ function Sponsors() {
 
 class Landing extends React.Component {
   render() {
-    const { cookies } = this.props;
-
-    const gradient = getStyle(cookies);
+    const gradient = randFrom(gradients);
 
     return (
       <AppContainer>

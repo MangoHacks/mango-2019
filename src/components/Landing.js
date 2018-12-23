@@ -5,6 +5,10 @@ import { Spring, animated } from "react-spring";
 import { interpolate } from "flubber";
 import { useMedia } from "the-platform";
 
+import { getStyle } from "../services/cookies";
+
+import h2rgb from "hex-rgb";
+
 import { Facebook, Twitter, Instagram, Slack } from "./Icons";
 import Mango from "./shared/Mango";
 
@@ -20,13 +24,13 @@ function randBetween(from, to) {
   return from + Math.floor(Math.random() * to);
 }
 
-function FilterDefs() {
+function FilterDefs(props) {
   return (
     <svg>
       <defs>
         <linearGradient id="blobgrad" x1="50%" y1="100%" x2="50%" y2="0%">
-          <stop stopColor="#FF5367" offset="0%" />
-          <stop stopColor="#FA5E3E" offset="100%" />
+          <stop stopColor={`${props.fromGrad || "#FF5367"}`} offset="0%" />
+          <stop stopColor={`${props.toGrad || "#FA5E3E"}`} offset="100%" />
         </linearGradient>
         <filter id="goo">
           <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
@@ -83,11 +87,25 @@ const bgs = [
 ];
 const bg = randFrom(bgs);
 
-function HeroBg() {
+function HeroBg(props) {
+  let fromGrad = h2rgb(props.fromGrad);
+
+  fromGrad = `rgba(${fromGrad.red}, ${fromGrad.green}, ${fromGrad.blue}, 0.39)`;
+
   return (
     <HeroImage bg={bg}>
       <div className="herobg-image" />
-      <div className="herobg-grad" />
+      <div
+        className="herobg-grad"
+        style={{
+          backgroundImage: `linear-gradient(
+            0deg, 
+            #ffffff 0%,
+            rgba(255, 255, 255, 0) 60%,
+              ${fromGrad} 100%, 
+            ${props.toGrad || "#fa5e3e"} 100%)`
+        }}
+      />
     </HeroImage>
   );
 }
@@ -275,15 +293,15 @@ function Blob(props) {
   );
 }
 
-function Hero() {
+function Hero(props) {
   const isSmall = useMedia({ maxWidth: SCREEN_SIZES.small });
 
   return (
     <React.Fragment>
       <HeroContainer>
-        <FilterDefs />
+        <FilterDefs fromGrad={props.fromGrad} toGrad={props.toGrad} />
 
-        <HeroBg />
+        <HeroBg fromGrad={props.fromGrad} toGrad={props.toGrad} />
         {isSmall ? (
           <React.Fragment>
             {/* <BlobWrap top={getTop(-1 / 24)} left={getLeft(-9 / 18)}>
@@ -337,7 +355,15 @@ function Hero() {
           >
             {animatedStyles => (
               <div style={animatedStyles}>
-                <RegisterButton href="/hacker">Register</RegisterButton>
+                <RegisterButton
+                  href="/hacker"
+                  style={{
+                    backgroundImage: `linear-gradient(0deg, ${props.fromGrad ||
+                      "#ff5367"} 0%, ${props.toGrad || "#fa5e3e"} 100%)`
+                  }}
+                >
+                  Register
+                </RegisterButton>
               </div>
             )}
           </Spring>
@@ -363,17 +389,28 @@ function Hero() {
   );
 }
 
-function About() {
+const bgs_about = [
+  require("../assets/mangohacks-about-1.jpg"),
+  require("../assets/mangohacks-about-2.jpg")
+];
+
+const bg_about_rand = randFrom(bgs_about);
+
+function About(props) {
   return (
     <div className="about">
       <div className="about-bg">
         <div
           className="about-bg-img"
+          style={{ backgroundImage: `url("${bg_about_rand}"` }}
+        />
+        <div
+          className="about-bg-grad"
           style={{
-            backgroundImage: `url("${require("../assets/about_bg_2.jpg")}"`
+            backgroundImage: `linear-gradient(0deg, ${props.fromGrad ||
+              "#ff5367"} 0%, ${props.toGrad || "#fa5e3e"} 100%)`
           }}
         />
-        <div className="about-bg-grad" />
       </div>
       <div className="about-content container">
         <h2>
@@ -665,9 +702,15 @@ function Faqs() {
   );
 }
 
-function Schedule() {
+function Schedule(props) {
   return (
-    <section className="schedule">
+    <section
+      className="schedule"
+      style={{
+        backgroundImage: `linear-gradient(0deg, ${props.fromGrad ||
+          "#ff5367"} 0%, ${props.toGrad || "#fa5e3e"} 100%)`
+      }}
+    >
       <div className="container">
         <h2 className="heading global-secondary-color generalReveal">
           Schedule
@@ -830,67 +873,85 @@ function Sponsors() {
   );
 }
 
-function Landing() {
-  return (
-    <AppContainer>
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
-            <a
-              className="mlh-badge"
-              href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=white"
-              target="_blank"
-            >
-              <img
-                src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg"
-                alt="Major League Hacking 2019 Hackathon Season"
-              />
-            </a>
+class Landing extends React.Component {
+  render() {
+    const { cookies } = this.props;
 
-            <Hero />
-            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={1500}>
-              {animatedStyles => (
-                <div className="container intro" style={animatedStyles}>
-                  <h2>A place for discovery</h2>
-                  <p>
-                    Mangohacks is a 36 hour hackathon that encourages learning,
-                    collaboration, growth, innovation, and fun. We will welcome
-                    500+ students from Florida and across the country, amazing
-                    mentors, and wonderful sponsors to create amazing things.
-                    MangoHacks is organized by students for students, with the
-                    strong belief that anyone can hack.
-                  </p>
+    const gradient = getStyle(cookies);
+
+    return (
+      <AppContainer>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {props => (
+            <div style={props}>
+              <a
+                className="mlh-badge"
+                href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=white"
+                target="_blank"
+              >
+                <img
+                  src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg"
+                  alt="Major League Hacking 2019 Hackathon Season"
+                />
+              </a>
+
+              <Hero fromGrad={gradient.from} toGrad={gradient.to} />
+              <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={1500}>
+                {animatedStyles => (
+                  <div className="container intro" style={animatedStyles}>
+                    <h2>A place for discovery</h2>
+                    <p>
+                      Mangohacks is a 36 hour hackathon that encourages
+                      learning, collaboration, growth, innovation, and fun. We
+                      will welcome 500+ students from Florida and across the
+                      country, amazing mentors, and wonderful sponsors to create
+                      amazing things. MangoHacks is organized by students for
+                      students, with the strong belief that anyone can hack.
+                    </p>
+                  </div>
+                )}
+              </Spring>
+              <About fromGrad={gradient.from} toGrad={gradient.to} />
+              <Faqs />
+              <Schedule fromGrad={gradient.from} toGrad={gradient.to} />
+              <Sponsors />
+              <div
+                className="footer"
+                style={{
+                  backgroundImage: `linear-gradient(0deg, ${gradient.from ||
+                    "#ff5367"} 0%, ${gradient.to || "#fa5e3e"} 100%)`
+                }}
+              >
+                <div className="container">
+                  <div className="social-media">
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/MangoHacks"
+                    >
+                      <Facebook fill="#ffffff" />
+                    </a>
+                    <a target="_blank" href="https://twitter.com/fiumangohacks">
+                      <Twitter fill="#ffffff" />
+                    </a>
+                    <a
+                      target="_blank"
+                      href="https://instagram.com/fiumangohacks"
+                    >
+                      <Instagram fill="#ffffff" />
+                    </a>
+                    <a target="_blank" href="https://mangohacks.slack.com/">
+                      <Slack fill="#ffffff" />
+                    </a>
+                  </div>
+                  <div>© mangohacks.com</div>
                 </div>
-              )}
-            </Spring>
-            <About />
-            <Faqs />
-            <Schedule />
-            <Sponsors />
-            <div className="footer">
-              <div className="container">
-                <div className="social-media">
-                  <a target="_blank" href="https://www.facebook.com/MangoHacks">
-                    <Facebook fill="#ffffff" />
-                  </a>
-                  <a target="_blank" href="https://twitter.com/fiumangohacks">
-                    <Twitter fill="#ffffff" />
-                  </a>
-                  <a target="_blank" href="https://instagram.com/fiumangohacks">
-                    <Instagram fill="#ffffff" />
-                  </a>
-                  <a target="_blank" href="https://mangohacks.slack.com/">
-                    <Slack fill="#ffffff" />
-                  </a>
-                </div>
-                <div>© mangohacks.com</div>
               </div>
             </div>
-          </div>
-        )}
-      </Spring>
-    </AppContainer>
-  );
+          )}
+        </Spring>
+      </AppContainer>
+    );
+  }
 }
 
 export default Landing;

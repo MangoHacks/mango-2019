@@ -1,5 +1,8 @@
 import React from "react";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import { withCookies } from "react-cookie";
 
 import Landing from "./components/Landing";
 
@@ -20,7 +23,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Landing} />
+          <Route exact path="/" component={withCookies(Landing)} />
           {/* Applications */}
           <Route exact path="/hacker" component={Hacker} />
           <Route exact path="/volunteer" component={Volunteer} />

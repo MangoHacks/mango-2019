@@ -11,6 +11,7 @@ import h2rgb from "hex-rgb";
 
 import { Facebook, Twitter, Instagram, Slack } from "./Icons";
 import Mango from "./shared/Mango";
+import AnimatedMango from "./AnimatedMango";
 
 const SCREEN_SIZES = {
   small: 769
@@ -321,22 +322,12 @@ function Hero(props) {
 
         <HeroContent>
           <div className="mangowrap">
-            <Spring
-              from={{ opacity: 0, transform: "scale(0.4)" }}
-              to={{ opacity: 1, transform: "scale(1)" }}
-              delay={300}
-            >
-              {animatedStyles => (
-                <div style={animatedStyles}>
-                  <Mango style={{ width: "100%", height: "130px" }} />
-                </div>
-              )}
-            </Spring>
+            <AnimatedMango width={"100%"} height={"135px"} />
           </div>
           <Spring
             from={{ opacity: 0, transform: "translateY(10px)" }}
             to={{ opacity: 1, transform: "translateY(0)" }}
-            delay={700}
+            delay={2100}
           >
             {animatedStyles => (
               <div style={{ ...animatedStyles, textAlign: "center" }}>
@@ -351,7 +342,7 @@ function Hero(props) {
           <Spring
             from={{ opacity: 0, transform: "translateY(10px)" }}
             to={{ opacity: 1, transform: "translateY(0)" }}
-            delay={1300}
+            delay={2300}
           >
             {animatedStyles => (
               <div style={animatedStyles}>
@@ -637,7 +628,7 @@ function Faqs() {
       )
     },
     {
-      question: "Can i ...?",
+      question: "Can I ...?",
       answer: (
         <React.Fragment>
           <p>

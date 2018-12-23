@@ -137,7 +137,7 @@ function MangoShineDot() {
       delay={1700}
       from={{ opacity: 0 }}
       to={{ opacity: 1 }}
-      config={{ duration: 800 }}
+      config={{ duration: 300 }}
     >
       {props => (
         <animated.circle

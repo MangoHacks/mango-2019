@@ -30,7 +30,7 @@ class Hacker extends React.Component {
     });
 
     try {
-      if (!isValidResume) throw "PDF's only";
+      if (!isValidResume) throw "Resume required (PDF's only)";
       if (resume.size == 0) throw "Resume required.";
 
       this.setState({ loading: true });

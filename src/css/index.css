@@ -419,6 +419,16 @@ h2 {
   margin: auto;
 }
 
+/* background-color: #fff;
+border-radius: 20px;
+margin: auto;
+width: 700px;
+box-shadow: -1px 3px 64px -17px rgba(0, 0, 0, 0.19);
+margin-top: 50px;
+margin-bottom: 50px;
+padding: 3rem 5rem;
+line-height: 2.5; */
+
 .response .card a {
   color: #000;
 }
@@ -486,6 +496,21 @@ h2 {
     top: 0;
     height: 320px;
   }
+
+  .res-blob-top {
+    position: fixed;
+    right: auto;
+    /* z-index: -1; */
+    top: 0;
+    height: 320px;
+  }
+  .res-blob-bottom {
+    position: fixed;
+    left: 0;
+
+    bottom: 0;
+    height: 400px;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -510,8 +535,6 @@ h2 {
 }
 
 @media only screen and (max-width: 480px) {
-  .res-blob-top,
-  .res-blob-bottom,
   .response-mango {
     display: none;
   }
@@ -523,7 +546,8 @@ h2 {
     font-size: 20px;
   }
   .response .card {
-    top: 35px;
+    top: 10px;
+    bottom: 10px;
     width: 95% !important;
     padding: 50px;
     font-size: 15px;

@@ -154,7 +154,7 @@ function MangoShineDot() {
 
 function MangoSplat() {
   const path = useRef(null);
-  const [offset, setOffset] = useState(50);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     setOffset(path.current.getTotalLength());
@@ -166,8 +166,8 @@ function MangoSplat() {
         native
         delay={1700}
         reset
-        from={{ dash: offset }}
-        to={{ dash: -55 }}
+        from={{ dash: offset * 3 }}
+        to={{ dash: offset }}
         config={{ duration: 550 }}
       >
         {props => (

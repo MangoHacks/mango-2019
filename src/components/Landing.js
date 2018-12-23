@@ -529,8 +529,7 @@ function Faqs() {
         <React.Fragment>
           <p>
             MangoHacks 2019 will take place at Florida International
-            University’s PG6 Tech Station from February 1st - 3rd. Get
-            Directions
+            University’s PG6 Tech Station from February 1st - 3rd.
           </p>
           <a
             target="_blank"

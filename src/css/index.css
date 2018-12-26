@@ -361,6 +361,10 @@ h2 {
   cursor: pointer;
 }
 
+.registration-card .mlh-cc {
+  line-height: 1;
+}
+
 .registration-card .loading {
   text-align: center;
 }

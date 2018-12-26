@@ -283,18 +283,32 @@ class Hacker extends React.Component {
                 </div>
 
                 {/* MLH Code of Conduct */}
-                <div className="form-group">
+                <div className="form-group mlh-cc text-muted">
                   <input required type="checkbox" name="mlh" value="AGREE" />
-                  &nbsp; I agree with&nbsp;
-                  <b>MLH</b>
                   &nbsp;
-                  <a
-                    href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
-                    target="_blank"
-                    className="mlh-link"
-                  >
-                    <u>Code of Conduct.</u>
-                  </a>
+                  <small>
+                    I authorize you to share my application/registration
+                    information for event administration, ranking, MLH
+                    administration, pre- and post-event informational e-mails,
+                    and occasional messages about hackathons in-line with the
+                    MLH Privacy Policy. I further I agree to the terms of both
+                    the MLH&nbsp;
+                    <a
+                      href="https://github.com/MLH/mlh-policies/blob/master/prize-terms-and-conditions/contest-terms.md"
+                      target="_blank"
+                      style={{ color: "#ff4e4a" }}
+                    >
+                      Contest Terms and Conditions
+                    </a>{" "}
+                    and the MLH &nbsp;
+                    <a
+                      href="https://mlh.io/privacy"
+                      target="_blank"
+                      style={{ color: "#ff4e4a" }}
+                    >
+                      Privacy Policy.
+                    </a>
+                  </small>
                 </div>
 
                 {/* Button */}

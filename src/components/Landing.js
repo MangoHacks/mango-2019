@@ -912,6 +912,15 @@ class Landing extends React.Component {
               >
                 <div className="container">
                   <div className="social-media">
+                    <div style={{ marginBottom: "10px" }}>
+                      <a
+                        href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+                        target="_blank"
+                        className="mlh-link"
+                      >
+                        MLH Code of Conduct
+                      </a>
+                    </div>
                     <a
                       target="_blank"
                       href="https://www.facebook.com/MangoHacks"

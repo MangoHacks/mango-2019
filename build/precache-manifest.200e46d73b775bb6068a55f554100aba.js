@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/mangohacks-about-1.0bfb9a44.jpg"
   },
   {
-    "revision": "39f872b92eaff6b7a5bc",
-    "url": "/static/css/main.2d677474.chunk.css"
+    "revision": "c673963fcc7499386c7e",
+    "url": "/static/css/main.fc774d08.chunk.css"
   },
   {
     "revision": "84b83a8a709c83c42d06",
@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/static/media/mangohacks-people-5.f83167fe.jpg"
   },
   {
-    "revision": "39f872b92eaff6b7a5bc",
-    "url": "/static/js/main.39f872b9.chunk.js"
+    "revision": "c673963fcc7499386c7e",
+    "url": "/static/js/main.c673963f.chunk.js"
   },
   {
     "revision": "efbb709568e0a4b4aa625ae3b8cecc4d",
@@ -68,7 +68,7 @@ self.__precacheManifest = [
     "url": "/static/media/sticker-mule.bee556b6.png"
   },
   {
-    "revision": "ffb08a2ab21361b1108b7ab865ec014f",
+    "revision": "06cb97e966ec41fcb5126cdd594f2b4e",
     "url": "/index.html"
   }
 ];

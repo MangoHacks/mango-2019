@@ -284,6 +284,20 @@ class Hacker extends React.Component {
 
                 {/* MLH Code of Conduct */}
                 <div className="form-group mlh-cc text-muted">
+                  <input required type="checkbox" name="mlh-cc" value="AGREE" />
+                  &nbsp;
+                  <small>
+                    I have read and agree to the &nbsp;
+                    <a
+                      href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+                      tagrte="_blank"
+                      style={{ color: "#ff4e4a" }}
+                    >
+                      Code of Conduct.
+                    </a>
+                  </small>
+                </div>
+                <div className="form-group mlh-cc text-muted">
                   <input required type="checkbox" name="mlh" value="AGREE" />
                   &nbsp;
                   <small>

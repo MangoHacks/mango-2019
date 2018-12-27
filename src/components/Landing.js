@@ -738,7 +738,7 @@ function Schedule(props) {
             </h3>
             <ul className="times">
               <li>
-                <span className="time global-accent-color">12:0am</span>{" "}
+                <span className="time global-accent-color">12:00am</span>{" "}
                 Midnight Snack
               </li>
               <li>

@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "0bfb9a44a9cb3d4998f4b9d41b5586e9",
-    "url": "/static/media/mangohacks-about-1.0bfb9a44.jpg"
+    "revision": "efbb709568e0a4b4aa625ae3b8cecc4d",
+    "url": "/static/media/mangohacks-about-2.efbb7095.jpg"
   },
   {
-    "revision": "3fdd99e58608af044500",
-    "url": "/static/css/main.fc774d08.chunk.css"
+    "revision": "5f5a4b87077feb3e6040",
+    "url": "/static/css/main.2ad565f1.chunk.css"
   },
   {
-    "revision": "84b83a8a709c83c42d06",
-    "url": "/static/js/1.84b83a8a.chunk.js"
+    "revision": "1b59e108f0267abb261d",
+    "url": "/static/js/1.1b59e108.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/static/media/mangohacks-people-5.f83167fe.jpg"
   },
   {
-    "revision": "3fdd99e58608af044500",
-    "url": "/static/js/main.3fdd99e5.chunk.js"
+    "revision": "0bfb9a44a9cb3d4998f4b9d41b5586e9",
+    "url": "/static/media/mangohacks-about-1.0bfb9a44.jpg"
   },
   {
-    "revision": "efbb709568e0a4b4aa625ae3b8cecc4d",
-    "url": "/static/media/mangohacks-about-2.efbb7095.jpg"
+    "revision": "5f5a4b87077feb3e6040",
+    "url": "/static/js/main.5f5a4b87.chunk.js"
   },
   {
     "revision": "9eaa26c8b66bcdd623f566f4548824a5",
@@ -60,6 +60,14 @@ self.__precacheManifest = [
     "url": "/static/media/google.f09f3211.png"
   },
   {
+    "revision": "4f9cbf55454966561730f4057eec1193",
+    "url": "/static/media/citrix.4f9cbf55.png"
+  },
+  {
+    "revision": "9ba4a356565e0997e3132e064207d166",
+    "url": "/static/media/8base.9ba4a356.png"
+  },
+  {
     "revision": "1c27fdec743d7c7d2e82c1e20ddd4a79",
     "url": "/static/media/ultimate.1c27fdec.png"
   },
@@ -68,7 +76,7 @@ self.__precacheManifest = [
     "url": "/static/media/sticker-mule.bee556b6.png"
   },
   {
-    "revision": "a1eaae7007b17a770173649f481bc687",
+    "revision": "d02e27b6fd70ee5998b4ef6d9f4ae497",
     "url": "/index.html"
   }
 ];

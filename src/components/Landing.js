@@ -759,7 +759,7 @@ function Schedule(props) {
             </h3>
             <ul className="times">
               <li>
-                <span className="time global-accent-color">12:0am</span>{" "}
+                <span className="time global-accent-color">12:00am</span>{" "}
                 Midnight Snack
               </li>
               <li>
@@ -815,6 +815,16 @@ function Sponsors() {
       name: "Google",
       link: "https://www.google.com/",
       logo: require("../assets/sponsors/google.png")
+    },
+    {
+      name: "Citrix",
+      link: "https://www.citrix.com/",
+      logo: require("../assets/sponsors/citrix.png")
+    },
+    {
+      name: "8Base",
+      link: "https://www.8base.com/",
+      logo: require("../assets/sponsors/8base.png")
     }
   ];
 

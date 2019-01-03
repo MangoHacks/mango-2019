@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/static/media/mangohacks-about-2.efbb7095.jpg"
   },
   {
-    "revision": "5f5a4b87077feb3e6040",
-    "url": "/static/css/main.2ad565f1.chunk.css"
+    "revision": "89cb8efd6f55e113fac9",
+    "url": "/static/css/main.89735b11.chunk.css"
   },
   {
-    "revision": "1b59e108f0267abb261d",
-    "url": "/static/js/1.1b59e108.chunk.js"
+    "revision": "61c2bb0e4a6f91731417",
+    "url": "/static/js/1.61c2bb0e.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -24,10 +24,6 @@ self.__precacheManifest = [
     "url": "/static/media/mangohacks-people-2.ebcf9f62.jpg"
   },
   {
-    "revision": "4b2b7745ed12bf8f03d6070479279c4e",
-    "url": "/static/media/mangohacks-people-3.4b2b7745.jpg"
-  },
-  {
     "revision": "c8ba0460be21349217b30a9b2c23a8b4",
     "url": "/static/media/mangohacks-people-4.c8ba0460.jpg"
   },
@@ -40,8 +36,8 @@ self.__precacheManifest = [
     "url": "/static/media/mangohacks-about-1.0bfb9a44.jpg"
   },
   {
-    "revision": "5f5a4b87077feb3e6040",
-    "url": "/static/js/main.5f5a4b87.chunk.js"
+    "revision": "89cb8efd6f55e113fac9",
+    "url": "/static/js/main.89cb8efd.chunk.js"
   },
   {
     "revision": "9eaa26c8b66bcdd623f566f4548824a5",
@@ -76,7 +72,7 @@ self.__precacheManifest = [
     "url": "/static/media/sticker-mule.bee556b6.png"
   },
   {
-    "revision": "d02e27b6fd70ee5998b4ef6d9f4ae497",
+    "revision": "a6d19cbd4f3e510c57db65f0c63254b2",
     "url": "/index.html"
   }
 ];

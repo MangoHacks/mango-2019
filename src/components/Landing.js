@@ -82,7 +82,6 @@ const HeroImage = styled.div`
 const bgs = [
   require("../assets/mangohacks-people-1.jpg"),
   require("../assets/mangohacks-people-2.jpg"),
-  require("../assets/mangohacks-people-3.jpg"),
   require("../assets/mangohacks-people-4.jpg"),
   require("../assets/mangohacks-people-5.jpg")
 ];

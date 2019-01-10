@@ -72,7 +72,7 @@ self.__precacheManifest = [
     "url": "/static/media/sticker-mule.bee556b6.png"
   },
   {
-    "revision": "a6d19cbd4f3e510c57db65f0c63254b2",
+    "revision": "cab1550e9a92f1c2fb9f64f624e6278b",
     "url": "/index.html"
   }
 ];

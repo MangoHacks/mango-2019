@@ -112,6 +112,25 @@ class Ge extends React.Component {
                   />
                 </div>
 
+                {/* Email */}
+                <div className="form-group">
+                  <label htmlFor="email">
+                    Email&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
+                  <input
+                    required
+                    name="email"
+                    type="email"
+                    className="form-control"
+                    aria-describedby="email"
+                    placeholder="foo@bar.com"
+                    autoComplete="off"
+                  />
+                </div>
+
                 {/* LevelOfStudy */}
                 <div className="form-group">
                   <label htmlFor="levelOfStudy">

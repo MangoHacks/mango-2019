@@ -139,6 +139,25 @@ class Express extends React.Component {
                   </select>
                 </div>
 
+                {/* Email */}
+                <div className="form-group">
+                  <label htmlFor="email">
+                    Email&nbsp;
+                    <span className="text-muted">
+                      <small>required</small>
+                    </span>
+                  </label>
+                  <input
+                    required
+                    name="email"
+                    type="email"
+                    className="form-control"
+                    aria-describedby="email"
+                    placeholder="foo@bar.com"
+                    autoComplete="off"
+                  />
+                </div>
+
                 {/* resume*/}
                 <div className="form-group">
                   <label htmlFor="resume">

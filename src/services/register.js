@@ -34,7 +34,6 @@ const volunteer = fields =>
       const { data } = await ri.post("/volunteer", fields);
       resolve(data);
     } catch (e) {
-      console.log(e);
       reject(e.response.data.error);
     }
   });
@@ -49,4 +48,16 @@ const workshop = fields =>
     }
   });
 
-export default { hacker, mentor, volunteer, workshop };
+const interview = (fields, company) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      console.log({ company, hacker: fields });
+      resolve();
+      // const { data } = await ri.post("/interview", { company, hacker: fields });
+      // resolve(data);
+    } catch (e) {
+      reject(e.response.data.error);
+    }
+  });
+
+export default { hacker, mentor, volunteer, workshop, interview };

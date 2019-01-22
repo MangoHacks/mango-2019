@@ -76,6 +76,11 @@ h2 {
   position: relative;
 }
 
+.iframe-video {
+  height: 520px;
+  width: 100%;
+}
+
 .intro {
   padding-top: 60px;
   padding-bottom: 60px;
@@ -467,6 +472,108 @@ line-height: 2.5; */
 }
 /* ---------------------------- */
 
+/* INTERVIEW */
+
+.interview {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-size: 1.3em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  position: relative;
+  margin-bottom: 60px;
+  z-index: 1;
+}
+
+.interview-bg {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  bottom: -30px;
+  right: -30px;
+  transform: rotate(-1deg);
+  display: block;
+  overflow: hidden;
+  border-radius: 240% 0% 240% 0% / 25% 130% 25% 130%;
+}
+.interview-bg-grad {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.interview-bg-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.interview-content {
+  position: relative;
+}
+
+.interview-content h1 {
+  font-weight: 900;
+}
+.interview-content h3 {
+  font-weight: 900;
+}
+
+.interview .sponsors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.company {
+  margin-top: 20px;
+  width: 300px;
+}
+.company p {
+  font-size: 18px;
+}
+.company a {
+  font-size: 18px;
+  color: white;
+}
+
+.company a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.company .logo-wrap {
+  flex: 1 1 48%;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.company .logo-wrap a {
+  display: block;
+  text-align: center;
+}
+
+.company .logo-wrap img {
+  max-width: 250px;
+  max-height: 100px;
+  height: auto;
+}
+
+/*VIDEO */
+.video {
+  margin: 100px auto 50px auto;
+}
+
 @media only screen and (max-width: 750px) {
   .registration-card {
     width: 550px !important;
@@ -476,6 +583,10 @@ line-height: 2.5; */
   }
   .register-mango {
     display: none;
+  }
+  .iframe-video {
+    height: 400px;
+    width: 100%;
   }
 }
 
@@ -535,6 +646,10 @@ line-height: 2.5; */
 
   .info {
     font-size: 1.3em !important;
+  }
+  .iframe-video {
+    height: 300px;
+    width: 100%;
   }
 }
 

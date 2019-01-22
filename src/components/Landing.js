@@ -13,6 +13,8 @@ import { Facebook, Twitter, Instagram, Slack } from "./Icons";
 import Mango from "./shared/Mango";
 import AnimatedMango from "./AnimatedMango";
 
+import Interview from "../components/Interview";
+
 const SCREEN_SIZES = {
   small: 769
 };
@@ -909,9 +911,35 @@ class Landing extends React.Component {
                 )}
               </Spring>
               <About fromGrad={gradient.from} toGrad={gradient.to} />
+
               <Faqs />
+
               <Schedule fromGrad={gradient.from} toGrad={gradient.to} />
               <Sponsors />
+              <Interview
+                fromGrad={gradient.from}
+                toGrad={gradient.to}
+                bg={bg_about_rand}
+              />
+              <div className="video container">
+                <h2>Experience</h2>
+                <h5 className="text-muted" style={{ marginBottom: "50px" }}>
+                  Take a sneak peak into what it's like to attend <br />
+                  Florida's Sweetest Hackathon
+                </h5>
+                {/* <video width="400" controls>
+                  <source src="mov.mp4" type="video/mp4" />
+                  <source src="mov.ogg" type="video/ogg" />
+                  Your browser does not support HTML5 video.
+                </video> */}
+                <iframe
+                  className="iframe-video"
+                  src="https://www.youtube.com/embed/iuPGCi9VEco"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              </div>
               <div
                 className="footer"
                 style={{

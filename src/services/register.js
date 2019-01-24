@@ -51,7 +51,7 @@ const workshop = fields =>
 const interview = (fields, company) =>
   new Promise(async (resolve, reject) => {
     try {
-      const { data } = await ri.post("/interview", { company, hacker: fields });
+      const { data } = await ri.post("/candidate", { company, hacker: fields });
       resolve(data);
     } catch (e) {
       reject(e.response.data.error);

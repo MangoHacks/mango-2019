@@ -7,18 +7,12 @@ import { RegBlobTop, RegBlobBottom } from "../Icons";
 import registerService from "../../services/register";
 
 class Ge extends React.Component {
-  state = { resume: "Upload resume", loading: false };
-
-  validateResume = file => file.type === "application/pdf";
+  state = { loading: false };
 
   submit = async e => {
     e.preventDefault();
 
     const form = new FormData(e.target);
-
-    const resume = form.get("resume");
-
-    const isValidResume = this.validateResume(resume);
 
     let values = [...form.values()];
     let fields = {};
@@ -27,9 +21,6 @@ class Ge extends React.Component {
     });
 
     try {
-      if (!isValidResume) throw "Resume required (PDF's only)";
-      if (resume.size == 0) throw "Resume required.";
-
       this.setState({ loading: true });
       await registerService.interview(fields, "ge");
 
@@ -43,7 +34,7 @@ class Ge extends React.Component {
   updateFile = e => this.setState({ resume: e.target.files[0].name });
 
   render() {
-    const { resume, loading } = this.state;
+    const { loading } = this.state;
 
     return (
       <React.Fragment>

@@ -9,6 +9,7 @@ import Landing from "./components/Landing";
 import Hacker from "./components/Applications/Hacker";
 import Mentor from "./components/Applications/Mentor";
 import Workshop from "./components/Applications/Workshop";
+import Confirm from "./components/Applications/Confirm";
 import Volunteer from "./components/Applications/Volunteer";
 import Carnival from "./components/Applications/Carnival";
 import Express from "./components/Applications/Express";
@@ -19,6 +20,7 @@ import VolunteerResponse from "./components/Responses/VolunteerResponse";
 import MentorResponse from "./components/Responses/MentorResponse";
 import WorkshopResponse from "./components/Responses/WorkshopResponse";
 import InterviewResponse from "./components/Responses/InterviewResponse";
+import ConfirmResponse from "./components/Responses/ConfirmResponse";
 
 import HTTP404 from "./components/HTTP404";
 
@@ -37,6 +39,7 @@ class App extends React.Component {
           <Route exact path="/interview-carnival" component={Carnival} />
           <Route exact path="/interview-express" component={Express} />
           <Route exact path="/interview-ge" component={Ge} />
+          <Route exact path="/confirm" component={Confirm} />
 
           {/* Responses */}
           <Route exact path="/hackerresponse" component={HackerResponse} />
@@ -53,6 +56,7 @@ class App extends React.Component {
             path="/interview-response"
             component={InterviewResponse}
           />
+          <Route exact path="/confirm-response" component={ConfirmResponse} />
 
           <Route component={HTTP404} />
         </Switch>

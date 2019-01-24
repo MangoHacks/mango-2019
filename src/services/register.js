@@ -61,7 +61,6 @@ const interview = (fields, company) =>
 const confirm = email =>
   new Promise(async (resolve, reject) => {
     try {
-      console.log(email);
       const { data } = await ri.put(`/application?email=${email.email}`);
       resolve(data);
     } catch (e) {

@@ -74,44 +74,6 @@ class Ge extends React.Component {
                 General Electric 🔋
               </h1>
               <form onSubmit={this.submit}>
-                {/* FirstName */}
-                <div className="form-group">
-                  <label htmlFor="firstName">
-                    First Name&nbsp;
-                    <span className="text-muted">
-                      <small>required</small>
-                    </span>
-                  </label>
-                  <input
-                    required
-                    name="firstName"
-                    type="text"
-                    className="form-control"
-                    aria-describedby="firstName"
-                    placeholder="Harry"
-                    autoComplete="off"
-                  />
-                </div>
-
-                {/* LastName */}
-                <div className="form-group">
-                  <label htmlFor="firstName">
-                    Last Name&nbsp;
-                    <span className="text-muted">
-                      <small>required</small>
-                    </span>
-                  </label>
-                  <input
-                    required
-                    name="lastName"
-                    type="text"
-                    className="form-control"
-                    aria-describedby="lastName"
-                    placeholder="Potter"
-                    autoComplete="off"
-                  />
-                </div>
-
                 {/* Email */}
                 <div className="form-group">
                   <label htmlFor="email">
@@ -129,56 +91,6 @@ class Ge extends React.Component {
                     placeholder="foo@bar.com"
                     autoComplete="off"
                   />
-                </div>
-
-                {/* LevelOfStudy */}
-                <div className="form-group">
-                  <label htmlFor="levelOfStudy">
-                    Level of study&nbsp;
-                    <span className="text-muted">
-                      <small>required</small>
-                    </span>
-                  </label>
-                  <select required className="form-control" name="levelOfStudy">
-                    <option key="FRESHMAN" value="FRESHMAN">
-                      Freshman
-                    </option>
-                    <option key="SOPHMORE" value="SOPHMORE">
-                      Sophmore
-                    </option>
-                    <option key="JUNIOR" value="JUNIOR">
-                      Junior
-                    </option>
-                    <option key="SENIOR" value="SENIOR">
-                      Senior
-                    </option>
-                    <option key="OTHER" value="OTHER">
-                      OTHER
-                    </option>
-                  </select>
-                </div>
-
-                {/* resume*/}
-                <div className="form-group">
-                  <label htmlFor="resume">
-                    Resume&nbsp;
-                    <span className="text-muted">
-                      <small>required</small>
-                    </span>
-                  </label>
-                  <br />
-                  <label className="btn" style={{ backgroundColor: "#F6F8FA" }}>
-                    <i className="fa fa-file-text" />
-                    &nbsp; {resume}
-                    <input
-                      noValidate
-                      accept="application/pdf, application/docx, application/msword"
-                      type="file"
-                      style={{ display: "none" }}
-                      name="resume"
-                      onChange={e => this.updateFile(e)}
-                    />
-                  </label>
                 </div>
 
                 {/* Button */}

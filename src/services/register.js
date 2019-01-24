@@ -51,8 +51,8 @@ const workshop = fields =>
 const interview = (fields, company) =>
   new Promise(async (resolve, reject) => {
     try {
-      // const { data } = await ri.post("/interview", { company, hacker: fields });
-      // resolve(data);
+      const { data } = await ri.post("/interview", { company, hacker: fields });
+      resolve(data);
     } catch (e) {
       reject(e.response.data.error);
     }
@@ -61,8 +61,8 @@ const interview = (fields, company) =>
 const confirm = email =>
   new Promise(async (resolve, reject) => {
     try {
-      // const { data } = await ri.put("/application", { email });
-      // resolve(data);
+      const { data } = await ri.put("/application", { email });
+      resolve(data);
     } catch (e) {
       reject(e.response.data.error);
     }

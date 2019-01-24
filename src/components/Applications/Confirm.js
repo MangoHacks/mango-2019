@@ -27,7 +27,7 @@ class Confirm extends React.Component {
       this.props.history.push({ pathname: "/confirm-response" });
     } catch (e) {
       this.setState({ loading: false });
-      alert(e);
+      alert("You are not a registered hacker!");
     }
   };
 

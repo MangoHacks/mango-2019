@@ -36,7 +36,7 @@ class Ge extends React.Component {
       this.props.history.push({ pathname: "/interview-response" });
     } catch (e) {
       this.setState({ loading: false, resume: "Upload resume" });
-      alert(e);
+      alert("You are not a registered hacker!");
     }
   };
 

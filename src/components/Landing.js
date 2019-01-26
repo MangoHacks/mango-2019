@@ -348,13 +348,13 @@ function Hero(props) {
             {animatedStyles => (
               <div style={animatedStyles}>
                 <RegisterButton
-                  href="/hacker"
                   style={{
                     backgroundImage: `linear-gradient(0deg, ${props.fromGrad ||
-                      "#ff5367"} 0%, ${props.toGrad || "#fa5e3e"} 100%)`
+                      "#ff5367"} 0%, ${props.toGrad || "#fa5e3e"} 100%)`,
+                    color: "white"
                   }}
                 >
-                  Register
+                  Registration Closed!
                 </RegisterButton>
               </div>
             )}

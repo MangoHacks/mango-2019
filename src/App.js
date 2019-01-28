@@ -32,7 +32,7 @@ class App extends React.Component {
           <Route exact path="/" component={Landing} />
 
           {/* Applications */}
-          {/* <Route exact path="/hacker" component={Hacker} /> */}
+          <Route exact path="/hacker" component={Hacker} />
           <Route exact path="/volunteer" component={Volunteer} />
           <Route exact path="/workshop" component={Workshop} />
           <Route exact path="/mentor" component={Mentor} />
@@ -42,7 +42,7 @@ class App extends React.Component {
           <Route exact path="/confirm" component={Confirm} />
 
           {/* Responses */}
-          {/* <Route exact path="/hackerresponse" component={HackerResponse} /> */}
+          <Route exact path="/hackerresponse" component={HackerResponse} />
           <Route exact path="/mentorresponse" component={MentorResponse} />
           <Route exact path="/workshopresponse" component={WorkshopResponse} />
           <Route exact path="/mentorresponse" component={MentorResponse} />

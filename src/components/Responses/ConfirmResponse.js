@@ -77,7 +77,7 @@ const ConfirmResponse = props => {
           <a target="_blank" href="https://instagram.com/fiumangohacks">
             <Instagram fill="#000" />
           </a>
-          <a target="_blank" href="https://mangohacks.slack.com/">
+          <a target="_blank" href="http://go.fiu.edu/mangohacks-slack">
             <Slack fill="#000" />
           </a>
         </div>

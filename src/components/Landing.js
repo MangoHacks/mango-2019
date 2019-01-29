@@ -973,7 +973,10 @@ class Landing extends React.Component {
                     >
                       <Instagram fill="#ffffff" />
                     </a>
-                    <a target="_blank" href="https://mangohacks.slack.com/">
+                    <a
+                      target="_blank"
+                      href="http://go.fiu.edu/mangohacks-slack"
+                    >
                       <Slack fill="#ffffff" />
                     </a>
                   </div>

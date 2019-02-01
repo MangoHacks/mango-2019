@@ -349,6 +349,7 @@ function Hero(props) {
               <div style={animatedStyles}>
                 <RegisterButton
                   href="https://live.mangohacks.com"
+                  target="_blank"
                   style={{
                     backgroundImage: `linear-gradient(0deg, ${props.fromGrad ||
                       "#ff5367"} 0%, ${props.toGrad || "#fa5e3e"} 100%)`,
